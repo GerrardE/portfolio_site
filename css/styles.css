@@ -1,4 +1,3 @@
-
 body {
   padding-top: 3.5rem;
   font-family: 'Fira Sans', sans-serif !important;
@@ -106,10 +105,6 @@ body {
 	color: #000;
 }
 
-.portfolio-item > img:hover {
-	border: 10px solid #fff;
-}
-
 /* ABOUT */
 #about {
 	margin: 30px;
@@ -152,7 +147,6 @@ body {
 	padding: 20px 2.5px 0px 2.5px !important;
 	margin: 10px 10px;
 }
-
 }
 
   /********** Small devices only **********/
