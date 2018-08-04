@@ -1,0 +1,180 @@
+
+body {
+  padding-top: 3.5rem;
+  font-family: 'Fira Sans', sans-serif !important;
+}
+
+/* NAVBAR */
+.navbar-toggler-icon:focus, .navbar-toggler-icon:hover {
+	color: #fff;
+}
+
+.navbar {
+	background-color: rgb(235, 205, 34);
+}
+
+.navbar-brand {
+	color: #fff;
+}
+
+.navbar-brand:hover {
+	color: #000;
+}
+
+.nav-item > .nav-link {
+	min-width: 48px;
+	margin: 0px 20px;
+	color: #fff;
+}
+
+.nav-item > .nav-link:hover {
+	border-bottom: 1px solid #fff;
+	max-width: 100px;
+	color: #000;
+}
+
+.active {
+	border-bottom: 2px solid;
+	color: #fff;
+	max-width: 150px;
+}
+
+.active:hover {
+	border-bottom: 0px;
+	max-width: 150px;
+}
+
+.navbar-toggler {
+	border: 1px solid #fff !important;
+} 
+
+/* MAIN STUFF */
+.jumbotron {
+	background-image: url(../images/webanner.png);
+	display: inline-block;
+	vertical-align: middle;
+	font: 0/0 serif;
+	text-shadow: none;
+	color: transparent;
+	background-size: 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 400px;
+}
+
+.engineering, .webDesign, .branding {
+  min-width: 30%;
+}
+
+.container > h3 {
+	color: #ffffff;
+	font-family: 'Noto Sans', sans-serif !important;
+	font-size: 30px;
+	margin: 50px 10px;
+}
+
+.jumbotron > .container > p > .btn {
+	font-family: 'Noto Sans', sans-serif !important;
+	margin: 0px 10px;
+	font-weight: 700; 
+}
+
+.jumbotron > .container > p > .btn:hover {
+	color: #fff;
+}
+
+/* FONT AWESOME */
+.row {	
+  font-size: ;
+ 	text-align: center;
+}
+
+.row .fa {
+  font-size: 70px;
+  color: rgb(235, 205, 34);
+}
+
+.contact .fa {
+	font-size: 30px;
+	color: rgb(235, 205, 34);
+  }
+
+/* PORTFOLIO */
+.col-lg-6 > .portfolio-item {
+	text-decoration: none;
+	color: #000;
+}
+
+.portfolio-item > img:hover {
+	border: 10px solid #fff;
+}
+
+/* ABOUT */
+#about {
+	margin: 30px;
+}
+
+/* CONTACT */
+.contact > .jumbotron {
+	background-image: url(../images/animation-bg.jpg);
+	display: inline-block;
+	vertical-align: middle;
+	font: 0/0 serif;
+	text-shadow: none;
+	color: transparent;
+	background-size: 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: auto;
+}
+
+/********** Medium devices only **********/
+@media (min-width: 301px) and (max-width: 567px) {
+    .jumbotron{
+	background-image: url(../images/webanner2.jpg);
+	display: inline-block;
+	vertical-align: middle;
+	font: 0/0 serif;
+	text-shadow: none;
+	color: transparent;
+	background-size: 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	width: 100%;
+	max-height: 220px;
+}
+	
+	.container > h3 {
+	color: #fff;
+	font-size: 20px;
+	padding: 20px 2.5px 0px 2.5px !important;
+	margin: 10px 10px;
+}
+
+}
+
+  /********** Small devices only **********/
+  @media (min-width: 0px) and (max-width: 300px) {
+    .jumbotron {
+	background-image: url(../images/webanner3.jpg);
+	display: inline-block;
+	vertical-align: middle;
+	font: 0/0 serif;
+	text-shadow: none;
+	color: transparent;
+	background-size: 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	width: 100%;
+	max-height: 100px;
+}
+
+	.container > h3 {
+	color: #fff;
+	font-size: 10px;
+	padding: 2.5px 1.75px 0px 1.75px !important;
+	margin: 2.5px 2.5px;
+}		
+}
