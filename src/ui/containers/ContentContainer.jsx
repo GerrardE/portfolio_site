@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import MainContainer from './MainContainer';
-import FooterContainer from '../components/organisms/AppFooter';
+import FooterContainer from './AppFooter';
 
 const ContentContainer = () => {
     return (

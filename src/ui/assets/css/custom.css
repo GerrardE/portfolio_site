@@ -1,0 +1,22 @@
+
+ /* FOOTER */
+.card-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 10;
+    width: 100%;
+    text-align: center;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-100 {
+    margin-bottom: 100px;
+}
