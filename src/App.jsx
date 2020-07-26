@@ -4,9 +4,10 @@ import { Provider } from "react-redux";
 import routes from "@ui/routes/route";
 import store from "@application/config/store/store";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "@ui/assets/css/custom.css";
-import "@ui/assets/css/styles.css";
 import "@ui/assets/css/fontawesome.css";
+
+import "@ui/assets/css/styles.css";
+import "@ui/assets/css/custom.css";
 import "@ui/assets/css/all.min.css";
 import "@ui/assets/css/simple-line-icons.css";
 

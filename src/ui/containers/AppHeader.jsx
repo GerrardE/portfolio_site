@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AppHeader = ({children}) => {
+const AppHeader = ({children, className }) => {
   return (
-    <header className="masthead">
+    <header className={className}>
       <div className="container h-100">
         <div className="row h-100">
           {children}
@@ -14,11 +14,13 @@ const AppHeader = ({children}) => {
 }
 
 AppHeader.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  className: PropTypes.string,
 }
 
 AppHeader.defaultProps = {
-  children: {}
+  children: {},
+  className: 'masthead'
 }
 
 export default AppHeader;

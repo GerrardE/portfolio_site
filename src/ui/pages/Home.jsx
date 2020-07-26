@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import { AppNavbar, AppFooter, AppHeader, AppSection } from '../containers';
+import { AppNavbar, AppFooter, AppHeader, AppSection, AppSocial } from '../containers';
 import FeatureItem from '../components/molecules/FeatureItem';
-import {Icon} from '../components/atoms';
 
-const HomePage = () => {
+const Home = () => {
   return (
     <Fragment>
-      <AppNavbar />
+      <AppNavbar showBand={false} />
       <AppHeader>
         <div className="col-lg-7 my-auto">
           <div className="header-content mx-auto">
@@ -70,32 +68,12 @@ const HomePage = () => {
           </Col>
         </Row>
       </AppSection>
-
-      <AppSection className='contact bg-primary'>
-        <Container>
-          <h2>Connect with me</h2>
-          <ul className="list-inline list-social">
-            <li className="list-inline-item social-linkedin">
-              <Link href>
-                <Icon className="fab fa-linkedin-in" />
-              </Link>
-            </li>
-            <li className="list-inline-item social-twitter">
-              <Link href>
-                <Icon className="fab fa-twitter" />
-              </Link>
-            </li>
-            <li className="list-inline-item social-facebook">
-              <Link href>
-                <Icon className="fab fa-facebook-f" />
-              </Link>
-            </li>
-          </ul>
-        </Container>
-      </AppSection>
+      
+      <hr />
+      <AppSocial />
       <AppFooter />
     </Fragment>
   )
 }
 
-export default HomePage;
+export default Home;

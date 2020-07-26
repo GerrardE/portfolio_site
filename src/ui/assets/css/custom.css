@@ -1,12 +1,40 @@
 
- /* FOOTER */
-.card-footer {
-    position: fixed;
+.app-band {
+    margin: 50px 0 0;
+    background-color: #6c757d;
+    height: 50px;
     left: 0;
-    bottom: 0;
-    top: 10;
-    width: 100%;
+    top: 0;
     text-align: center;
+}
+
+section {
+    padding: 0;
+}
+
+section.features .section-heading {
+    margin-bottom: 50px;
+}
+
+header.custom-masthead {
+    background-image: url('https://www.aljazeera.com/mritems/imagecache/mbdxxlarge/mritems/Images/2020/5/1/970d361a783b40538332c4d7b32c6366_18.jpg') !important;
+    margin-bottom: 50px;
+    background: no-repeat center center;
+    background-color: #868e96;
+    background-attachment: scroll;
+    position: relative;
+    background-size: cover;
+    height: 500px;
+}
+
+header.custom-masthead .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #212529;
+    opacity: .7;
 }
 
 .mt-10 {
