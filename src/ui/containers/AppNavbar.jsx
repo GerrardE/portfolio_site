@@ -31,10 +31,10 @@ const AppNavbar = ({ showBand }) => {
                 <NavLink href="/">Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/blog">Blog</NavLink>
+                <NavLink href="/about">About</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/portfolio">Portfolio</NavLink>
+                <NavLink href="/blog">Blog</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/contact">Contact</NavLink>

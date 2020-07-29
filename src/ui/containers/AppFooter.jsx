@@ -17,6 +17,9 @@ const AppFooter = () => {
         </p>
         <ul className="list-inline">
           <li className="list-inline-item">
+            <Link href to='/'>Home</Link>
+          </li>
+          <li className="list-inline-item">
             <Link href>Privacy</Link>
           </li>
           <li className="list-inline-item">
