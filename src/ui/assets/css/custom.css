@@ -1,0 +1,103 @@
+
+.app-band {
+    margin: 50px 0 0;
+    background-color: #6c757d;
+    height: 50px;
+    left: 0;
+    top: 0;
+    text-align: center;
+}
+
+section {
+    padding: 0;
+}
+
+section.features .section-heading {
+    margin-bottom: 25px;
+}
+
+header.custom-masthead {
+    background-image: url('https://www.aljazeera.com/mritems/imagecache/mbdxxlarge/mritems/Images/2020/5/1/970d361a783b40538332c4d7b32c6366_18.jpg') !important;
+    margin-bottom: 50px;
+    background: no-repeat center center;
+    background-color: #868e96;
+    background-attachment: scroll;
+    position: relative;
+    background-size: cover;
+    height: 500px;
+}
+
+.contact-masthead {
+    background-image: none;
+    margin: 50px 0 50px 0;
+    padding: 0;
+    height: 400px;
+}
+
+.map {
+    width: 100%;
+    height: 400px
+}
+
+header.custom-masthead .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #212529;
+    opacity: .7;
+}
+
+.resume-page {
+    margin: 100px 50px;
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(168,167,155,1);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(168,167,155,1);
+    box-shadow: 4px 4px 5px 0px rgba(168,167,155,1);
+}
+
+.text-primary, .text-warning {
+    color: #0D3F71 !important;
+}
+
+.text-upper {
+    font-weight: 700;
+}
+
+.img-profile {
+    width: 150px;
+    height: auto;
+    float: right;
+}
+
+#skills .dev-icons {
+    color: #0d3f71
+}
+
+.btn-xl {
+    background-color: #0d3f71;
+    color: #fff;
+    font-weight: 400;
+}
+
+.btn-xl:hover {
+    background-color: #f8f9fa;
+    border-color: #0d3f71;
+    color: #0d3f71;
+}
+
+div.resume-page.card {
+    background-color: #f8f9fa;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-100 {
+    margin-bottom: 100px;
+}
