@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import { Container, Card } from "reactstrap";
-import { Link } from "react-router-dom";
-import { AppNavbar, AppFooter, AppSection } from "../containers";
+import { Container, Card, Col, Row } from "reactstrap";
+// import { Link } from "react-router-dom";
+import { AppNavbar, AppFooter, AppSection, AppSocial } from "../containers";
 import "@ui/assets/css/about.css";
 import { Icon, Divider } from "../components/atoms";
 
@@ -13,35 +13,33 @@ const About = () => {
         <Card className='resume-page'>
           <AppSection className="resume-section" id="about">
             <div className="resume-section-content">
-              <h1 className="mb-0 text-upper">
-                Ezeugwa
-                <span className="text-primary"> Gerrard</span>
-              </h1>
-              <div className="subheading mb-5">
-                Gbagada · Lagos · (+234) 813-751-9688 ·
-                <a href="mailto:ezeugwagerrard@gmail.com">
-                  {" "}
-                  ezeugwagerrard@gmail.com
-                </a>
-              </div>
-              <p className="lead mb-5">
-                I use technology for the good of mankind. My experience spans
-                IT, Banking and Finance, Oil and Gas, Telecommunications and
-                Federal Ministries. I have a solid grasp of modern Frontend and
-                Dev Process Automation technologies. 
-              </p>
+             
+              <Row>
+                <Col lg='9'>
+                  <h1 className="mb-0 text-upper">
+                    Ezeugwa&nbsp;
+                    <span className="text-primary"> Gerrard</span>
+                  </h1>
+                  <div className="subheading mb-5">
+                    Gbagada · Lagos 
+                  </div>
 
-              <div className="social-icons">
-                <Link href className="social-icon">
-                  <Icon className="fab fa-linkedin-in" />
-                </Link>
-                <Link href className="social-icon">
-                  <Icon className="fab fa-github" />
-                </Link>
-                <Link href className="social-icon">
-                  <Icon className="fab fa-twitter" />
-                </Link>
-              </div>
+                  <p className="lead mb-5">
+                    I use technology for the good of mankind. My experience spans
+                    IT, Banking and Finance, Oil and Gas, Telecommunications and
+                    Federal Government. I have a solid grasp of modern Frontend and
+                    Dev Process Automation technologies. 
+                  </p>
+                </Col>
+
+                <Col lg='3'>
+                  <span className="d-none d-lg-block">
+                    <img className="img-fluid img-profile rounded-circle mb-2" src="https://media-exp1.licdn.com/dms/image/C4E03AQHv_mBm57S8lg/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=N1VcPkcOPS6A1jT335rLY8Qo_csdow_aeOINMv92j1o" alt="" />
+                  </span>
+                </Col>
+              </Row>
+              
+              <AppSocial />
             </div>
           </AppSection>
           <Divider className="m-0" />
@@ -135,10 +133,7 @@ const About = () => {
 
           <AppSection className="resume-section" id="skills">
             <div className="resume-section-content">
-              <h2 className="mb-5">Skills</h2>
-              <div className="subheading mb-3">
-                Programming Languages &amp; Tools
-              </div>
+              <h2 className="mb-5">Skills &amp; Tools</h2>
               <ul className="list-inline dev-icons">
                 <li className="list-inline-item">
                   <Icon className="fab fa-html5" />
@@ -157,6 +152,9 @@ const About = () => {
                 </li>
                 <li className="list-inline-item">
                   <Icon className="fab fa-python" />
+                </li>
+                <li className="list-inline-item">
+                  <Icon className="fas fa-database" />
                 </li>
                 <li className="list-inline-item">
                   <Icon className="fab fa-npm" />

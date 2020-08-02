@@ -13,7 +13,7 @@ section {
 }
 
 section.features .section-heading {
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 header.custom-masthead {
@@ -54,6 +54,40 @@ header.custom-masthead .overlay {
     -webkit-box-shadow: 4px 4px 5px 0px rgba(168,167,155,1);
     -moz-box-shadow: 4px 4px 5px 0px rgba(168,167,155,1);
     box-shadow: 4px 4px 5px 0px rgba(168,167,155,1);
+}
+
+.text-primary, .text-warning {
+    color: #0D3F71 !important;
+}
+
+.text-upper {
+    font-weight: 700;
+}
+
+.img-profile {
+    width: 150px;
+    height: auto;
+    float: right;
+}
+
+#skills .dev-icons {
+    color: #0d3f71
+}
+
+.btn-xl {
+    background-color: #0d3f71;
+    color: #fff;
+    font-weight: 400;
+}
+
+.btn-xl:hover {
+    background-color: #f8f9fa;
+    border-color: #0d3f71;
+    color: #0d3f71;
+}
+
+div.resume-page.card {
+    background-color: #f8f9fa;
 }
 
 .mt-10 {

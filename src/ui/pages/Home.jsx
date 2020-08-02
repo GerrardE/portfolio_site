@@ -34,7 +34,6 @@ const Home = () => {
         <div className="section-heading text-center">
           <h2>Services</h2>
           <p className="text-muted">What can I Engineer for you?</p>
-          <hr />
         </div>
         <Row>
           <Col lg='12' className='my-auto'>
@@ -51,7 +50,7 @@ const Home = () => {
                 <Col lg='4'>
                   <FeatureItem 
                     headerText='DEVOPS'
-                    paraText='Understanding the software development life cycle has enabled me build expertise in digital pipeline development and various automation tools'
+                    paraText='Over the years, I developed invaluable skills in digital pipeline development and various automation tools'
                     iconClassName='icon-settings text-primary'
                   />
                 </Col>
