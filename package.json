@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "My portfolio website",
   "main": "app.js",
+  "homepage": "http://gerrarde.github.io/portfolio_site",
   "scripts": {
     "start:dev": "webpack-dev-server --config webpack.dev.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "npm run clean && webpack --config webpack.prod.js",
     "clean": "rm -rf dist"
   },
@@ -22,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/GerrardE/ezeugwagerrard-frontend#bugs"
   },
-  "homepage": "https://github.com/GerrardE/ezeugwagerrard-frontend.git#readme",
   "devDependencies": {
     "@babel/plugin-proposal-export-default-from": "^7.7.4",
     "eslint": "^5.16.0",
@@ -33,6 +35,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^4.0.2",
+    "gh-pages": "^3.1.0",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
