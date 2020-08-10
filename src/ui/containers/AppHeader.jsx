@@ -14,7 +14,7 @@ const AppHeader = ({children, className }) => {
 }
 
 AppHeader.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string, PropTypes.node]),
   className: PropTypes.string,
 }
 

@@ -1,10 +1,30 @@
-import React, { Fragment } from 'react';
-import { Container, Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from 'react';
+import { Container, Col } from 'reactstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import * as actions from '@domain/redux/actions/get_posts';
 import { AppNavbar, AppFooter, AppHeader } from '../containers';
 import "@ui/assets/css/blog.css";
+import { BlogItem, AppPagination } from '../components/molecules';
 
 const Home = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actions.get_posts())
+  }, [dispatch])
+
+  const posts = useSelector(state => state.get_posts.posts)
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   return (
     <Fragment>
       <AppNavbar showBand={false} />
@@ -17,30 +37,27 @@ const Home = () => {
         </Col>
       </AppHeader>
       <Container>
-        <Row>
-          <Col lg='8' md='10' className='mx-auto'>
-            <div className="post-preview">
-              <Link to='/blogpost'>
-                <h2 className="post-title">
-                  Man must explore, and this is exploration at its greatest
-                </h2>
-                <h3 className="post-subtitle">
-                  Problems look mighty small from 150 miles up
-                </h3>
-              </Link>
-              <p className="post-meta">
-                Posted by
-                {' '}
-                <Link href>Start Bootstrap</Link>
-                {' '}
-                on September 24, 2019
-              </p>
-            </div>
-          </Col>
-        </Row>
+        <div className="clearfix">
+          <AppPagination 
+            className=' '
+            postsPerPage={postsPerPage} 
+            totalPosts={posts.length} 
+            paginate={paginate} 
+          />
+        </div>
+        {
+          currentPosts.map((post) => (
+            <BlogItem key={uuidv4()} post={post} />
+          ))
+        }
         <hr />
         <div className="clearfix">
-          <Link href className="btn btn-secondary btn-xl float-right">Older Posts &rarr;</Link>
+          <AppPagination 
+            className=' '
+            postsPerPage={postsPerPage} 
+            totalPosts={posts.length} 
+            paginate={paginate} 
+          />
         </div>
       </Container>
       <hr />
