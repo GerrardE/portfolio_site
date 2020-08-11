@@ -9,7 +9,7 @@ const AppSocial = () => {
         <Col lg='8' md='10' className="mx-auto">
           <ul className="list-inline text-center">
             <li className="list-inline-item">
-              <Link href>
+              <Link to='link' href>
                 <span className="fa-stack fa-lg">
                   <i className="fas fa-circle fa-stack-2x" />
                   <i className="fab fa-linkedin fa-stack-1x fa-inverse" />
@@ -17,7 +17,7 @@ const AppSocial = () => {
               </Link>
             </li>
             <li className="list-inline-item">
-              <Link href>
+              <Link to='link' href>
                 <span className="fa-stack fa-lg">
                   <i className="fas fa-circle fa-stack-2x" />
                   <i className="fab fa-twitter fa-stack-1x fa-inverse" />
@@ -25,7 +25,7 @@ const AppSocial = () => {
               </Link>
             </li>
             <li className="list-inline-item">
-              <Link href>
+              <Link to='link' href>
                 <span className="fa-stack fa-lg">
                   <i className="fas fa-circle fa-stack-2x" />
                   <i className="fab fa-facebook-f fa-stack-1x fa-inverse" />
@@ -33,7 +33,7 @@ const AppSocial = () => {
               </Link>
             </li>
             <li className="list-inline-item">
-              <Link href>
+              <Link to='link' href>
                 <span className="fa-stack fa-lg">
                   <i className="fas fa-circle fa-stack-2x" />
                   <i className="fab fa-github fa-stack-1x fa-inverse" />

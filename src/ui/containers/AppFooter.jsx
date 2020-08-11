@@ -20,13 +20,13 @@ const AppFooter = () => {
             <Link href to='/'>Home</Link>
           </li>
           <li className="list-inline-item">
-            <Link href>Privacy</Link>
+            <Link href to='/privacy'>Privacy</Link>
           </li>
           <li className="list-inline-item">
-            <Link href>Terms</Link>
+            <Link href to='/terms'>Terms</Link>
           </li>
           <li className="list-inline-item">
-            <Link href>FAQ</Link>
+            <Link href to='/faq'>FAQ</Link>
           </li>
         </ul>
       </Container>

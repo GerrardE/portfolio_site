@@ -3,25 +3,22 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
-const BlogItem = ({ postTitle, postSubtitle, postMeta }) => {
+const BlogItem = ({ post }) => {
+
   return (
     <Row>
       <Col lg='8' md='10' className='mx-auto'>
         <div className="post-preview">
-          <Link href>
+          <Link href to={`/blog/${post.id}`}>
             <h2 className="post-title">
-              {postTitle}
+              {post.title.toUpperCase()}
             </h2>
             <h3 className="post-subtitle">
-              {postSubtitle}
+              {post.body.slice(0, 100)}
             </h3>
           </Link>
           <p className="post-meta">
-            Posted by
-            {' '}
-            <Link href>{postMeta.author}</Link>
-            {' '}
-            {postMeta.date}
+            Posted on 24 September 2019
           </p>
         </div>
       </Col>
@@ -30,9 +27,7 @@ const BlogItem = ({ postTitle, postSubtitle, postMeta }) => {
 }
 
 BlogItem.propTypes = {
-  postTitle: PropTypes.string.isRequired,
-  postSubtitle: PropTypes.string.isRequired,
-  postMeta: PropTypes.string.isRequired,
+  post: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
 }
 
 export default BlogItem;

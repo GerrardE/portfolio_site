@@ -17,7 +17,7 @@ const AppSection = ({ className, id, children }) => {
 AppSection.propTypes = {
   className: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string, PropTypes.node]).isRequired
 }
 
 export default AppSection;

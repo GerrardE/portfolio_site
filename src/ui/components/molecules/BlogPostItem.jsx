@@ -1,10 +1,17 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Row, Col, Container } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {Image} from '../atoms';
 
-const BlogPost = () => {
+const BlogPost = (props) => {
+  
+  // const {match} = props;
+  // const {params} = match;
+  // const {id} = params
+  // // eslint-disable-next-line no-console
+  // console.log(id)
+
   return (
     <article>
       <Container>
@@ -58,6 +65,12 @@ const BlogPost = () => {
   )
 }
 
-BlogPost.propTypes = {}
+BlogPost.propTypes = {
+  match: PropTypes.func
+}
+
+BlogPost.defaultProps = {
+  match: () => {}
+}
 
 export default BlogPost;

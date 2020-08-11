@@ -1,11 +1,10 @@
 import axios from 'axios';
 import errorHandler from './error.service';
  
-axios.defaults.baseURL = 'https://api.example.com';
-axios.defaults.headers.common['Authorization'] = process.env.AUTH_TOKEN;
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com/';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
-export const getResource = (path) => {
+const getResource = (path) => {
   return new Promise((resolve, reject) => {
     axios.get(`${path}`)
       .then(response => {  resolve(response) })
@@ -13,7 +12,7 @@ export const getResource = (path) => {
   });
 };
 
-export const postResource = (path, body) => {
+const postResource = (path, body) => {
   return new Promise((resolve, reject) => {
     axios.post(`${path}`, body)
       .then(response => {  resolve(response) })
@@ -21,7 +20,7 @@ export const postResource = (path, body) => {
   });
 };
 
-export const putResource = (path, body) => {
+const putResource = (path, body) => {
   return new Promise((resolve, reject) => {
     axios.put(`${path}`, body)
       .then(response => {  resolve(response) })
@@ -29,10 +28,17 @@ export const putResource = (path, body) => {
   });
 };
 
-export const deleteResource = (path) => {
+const deleteResource = (path) => {
   return new Promise((resolve, reject) => {
     axios.delete(`${path}`)
       .then(response => {  resolve(response) })
       .catch(error => { reject(errorHandler(error)) });
   });
 };
+
+export default {
+  getResource,
+  postResource,
+  putResource,
+  deleteResource
+}

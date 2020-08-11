@@ -1,4 +1,4 @@
-import MESSAGES from '@constants/messages';
+import MESSAGES from '@domain/constants/messages';
 
 const debug = 'console';
 
