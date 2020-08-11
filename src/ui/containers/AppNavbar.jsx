@@ -44,7 +44,7 @@ const AppNavbar = ({ showBand }) => {
         </Container>
       </Navbar>
       {
-        showBand === 'true' ? <AppBand /> : ''
+        showBand.trim() === 'true' ? <AppBand /> : ''
       }
     </div>
   );
