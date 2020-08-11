@@ -1,4 +1,4 @@
-import { Home, Blog, BlogPost, Contact, About } from "../pages";
+import { Home, Blog, BlogPost, Contact, About, PageNotFound } from "../pages";
 
 const routes = [
     {
@@ -20,6 +20,10 @@ const routes = [
     {
         path: '/about',
         component: About
+    },
+    {
+        path: '*',
+        component: PageNotFound
     },
 ]
 
