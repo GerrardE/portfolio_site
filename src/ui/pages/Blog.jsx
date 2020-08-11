@@ -43,6 +43,7 @@ const Home = () => {
             postsPerPage={postsPerPage} 
             totalPosts={posts.length} 
             paginate={paginate} 
+            currentPage={currentPage}
           />
         </div>
         {
@@ -50,17 +51,16 @@ const Home = () => {
             <BlogItem key={uuidv4()} post={post} />
           ))
         }
-        <hr />
         <div className="clearfix">
           <AppPagination 
             className=' '
             postsPerPage={postsPerPage} 
             totalPosts={posts.length} 
             paginate={paginate} 
+            currentPage={currentPage}
           />
         </div>
       </Container>
-      <hr />
       <AppFooter />
     </Fragment>
   )

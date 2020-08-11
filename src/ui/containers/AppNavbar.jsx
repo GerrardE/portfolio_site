@@ -44,14 +44,18 @@ const AppNavbar = ({ showBand }) => {
         </Container>
       </Navbar>
       {
-        showBand ?? <AppBand />
+        showBand === 'true' ? <AppBand /> : ''
       }
     </div>
   );
 }
 
 AppNavbar.propTypes = {
-  showBand: PropTypes.bool.isRequired
+  showBand: PropTypes.string
+}
+
+AppNavbar.defaultProps = {
+  showBand: 'false'
 }
 
 export default AppNavbar;

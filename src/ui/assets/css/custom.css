@@ -86,6 +86,16 @@ header.custom-masthead .overlay {
     color: #0d3f71;
 }
 
+button.page-link{
+    color: #0d3f71;
+    font-weight: 500;
+}
+
+li.active-page.page-item > button.page-link {
+    color: #fff;
+    background-color: #0d3f71;
+}
+
 div.resume-page.card {
     background-color: #f8f9fa;
 }

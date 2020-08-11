@@ -4,16 +4,17 @@ import { Row, Col } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 const BlogItem = ({ post }) => {
+
   return (
     <Row>
       <Col lg='8' md='10' className='mx-auto'>
         <div className="post-preview">
-          <Link href to='!#'>
+          <Link href to={`/blog/${post.id}`}>
             <h2 className="post-title">
-              {post.title}
+              {post.title.toUpperCase()}
             </h2>
             <h3 className="post-subtitle">
-              {post.body.slice(0, 40)}
+              {post.body.slice(0, 100)}
             </h3>
           </Link>
           <p className="post-meta">

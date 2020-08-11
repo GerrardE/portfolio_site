@@ -8,7 +8,7 @@ import { BlogPostItem } from '../components/molecules';
 const BlogPost = () => {
   return (
     <Fragment>
-      <AppNavbar />
+      <AppNavbar showBand='true' />
       <BlogPostItem />
       <hr />
       <div className="clearfix container col-lg-6 col-md-6 mx-auto">
