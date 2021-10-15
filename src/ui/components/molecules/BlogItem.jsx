@@ -21,6 +21,7 @@ const BlogItem = ({ post }) => {
             Posted on 24 September 2019
           </p>
         </div>
+        <hr className="my-4" />
       </Col>
     </Row>
   )

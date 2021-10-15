@@ -1,11 +1,15 @@
-
 .app-band {
-    margin: 50px 0 0;
     background-color: #1B4487;
     height: 50px;
     left: 0;
     top: 0;
     text-align: center;
+}
+
+@media (min-width: 991px) {
+    .app-band {
+        margin: 50px 0 30px;
+    }
 }
 
 .app-loader{

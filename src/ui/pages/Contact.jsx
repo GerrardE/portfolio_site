@@ -3,14 +3,14 @@ import {useSelector, useDispatch} from 'react-redux';
 import { Container, Row } from "reactstrap";
 import * as actions from '@domain/redux/actions/loader';
 import {AppLoader} from '@ui/components/molecules';
-import { AppNavbar, AppFooter, AppSocial } from "../containers";
-import "@ui/assets/css/blog.css";
+import { AppNavbar, AppFooter, AppSocial } from "../components/organisms";
+// import "@ui/assets/css/blog.css";
 
 const Contact = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch(actions.count_down())
+    dispatch(actions.count_down(1000))
   },[dispatch])
   
   const loading = useSelector(state => state.loader.loading)

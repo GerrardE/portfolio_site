@@ -1,83 +1,118 @@
-import React, { Fragment, useEffect } from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import { Container, Row, Col } from 'reactstrap';
-import {Link} from 'react-router-dom';
-import * as actions from '@domain/redux/actions/loader';
-import {AppLoader} from '@ui/components/molecules';
-import { AppNavbar, AppFooter, AppHeader, AppSection, AppSocial } from '../containers';
-import FeatureItem from '../components/molecules/FeatureItem';
+import React, { Fragment, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Row, Col, Container } from "reactstrap";
+// import {Link} from 'react-router-dom';
+import * as actions from "@domain/redux/actions/loader";
+import { AppLoader } from "@ui/components/molecules";
+import { AppNavbar, AppFooter, AppSocial } from "../components/organisms";
 
 const Home = () => {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    dispatch(actions.count_down())
-  },[dispatch])
-  
-  const loading = useSelector(state => state.loader.loading)
+    dispatch(actions.count_down(1000));
+  }, [dispatch]);
 
-  return (
-    loading ? 
-      <AppLoader /> :
-    (
-      <Fragment>
-        <AppNavbar showBand='false ' />
-        <AppHeader className='masthead home-masthead'>
-          <div className='overlay' />
-          <div className="col-lg-7 my-auto">
-            <div className="header-content mx-auto">
-              <h2 className="mb-5">Repetitive processes reduce ROI. Engineers find unique solutions to real life, world changing problems and help plug wastage.</h2>
-              <h6>Find out how I am changing my world now, and how I can help change yours.</h6>
-              <br />
-              <Link href to="/blog" className="btn btn-outline btn-xl">Start Here</Link>
+  const loading = useSelector((state) => state.loader.loading);
+
+  return loading ? (
+    <AppLoader />
+  ) : (
+    <Fragment>
+      <AppNavbar showBand="true " />
+      <Container>
+        <Row>
+          <Col lg="8" md="10" className="mx-auto mt-3">
+            <h4>Bio</h4>
+            <div className="post-preview">
+              <p className="">
+                I am an Engineer in the Fintech space with 5+ years of
+                experience solving exciting problems with Javascript and Python.
+                I also mentor young and aspiring engineers to
+                become Full-Stack Javascript Engineers. In SRE/DevOps, I have a
+                core focus on infrastructure and Amazon Web Services.
+              </p>
             </div>
-          </div>
-        </AppHeader>
+          </Col>
+        </Row>
 
-        <AppSection className='features' id='features'>
-          <div className="section-heading text-center">
-            <h2>Services</h2>
-            <p className="text-muted">What can I Engineer for you?</p>
-          </div>
-          <Row>
-            <Col lg='12' className='my-auto'>
-              <Container fluid>
-                <Row>
-                  <Col lg='4'>
-                    <FeatureItem 
-                      headerText='SOFTWARE'
-                      paraText='I love working with interesting teams to build mobile and web applications that scale well across all platforms'
-                      iconClassName='icon-screen-desktop text-primary'
-                    />
-                  </Col>
-              
-                  <Col lg='4'>
-                    <FeatureItem 
-                      headerText='DEVOPS'
-                      paraText='Over the years, I developed invaluable skills in digital pipeline development and various automation tools'
-                      iconClassName='icon-settings text-primary'
-                    />
-                  </Col>
-                
-                  <Col lg='4'>
-                    <FeatureItem 
-                      headerText='MENTORSHIP'
-                      paraText='Giving back to the dev community by providing mentorship and support for aspiring Engineers is fun'
-                      iconClassName='icon-share text-primary'
-                    />
-                  </Col>
-                </Row>
-              </Container>
-            </Col>
-          </Row>
-        </AppSection>
-        
-        <hr />
-        <AppSocial />
-        <AppFooter />
-      </Fragment>
-    )
-  )
-}
+        <Row>
+          <Col lg="8" md="10" className="mx-auto mt-3">
+            <h4>Experience</h4>
+            <hr className="my-4" />
+            <div className="post-preview">
+              <h6>Software Engineer, UBA Group</h6>
+              <h6>Dec 2019 - Present</h6>
+              <h6>Lagos, Nigeria.</h6>
+
+              <p>
+                Build, test and deploy payment profiling, integration,
+                collections, settlements, reconciliation applications and
+                microservices.
+              </p>
+              <p className="post-meta">
+                Gitlab CI/CD, TypeScript, React, Node, Express, C# and Dotnet.
+              </p>
+            </div>
+            <hr className="my-4" />
+            <div className="post-preview">
+              <h6>Software Engineer, Andela</h6>
+              <h6>May 2019 - Sep 2019</h6>
+              <h6>Lagos, Nigeria.</h6>
+
+              <p className="">Build, ship and scale javascript applications.</p>
+              <p className="post-meta">React, Node and Express</p>
+            </div>
+            <hr className="my-4" />
+            <div className="post-preview">
+              <h6>Web Developer, Oceanprideml Ltd</h6>
+              <h6>Jan 2018 - Jan 2019</h6>
+              <h6>Lagos, Nigeria.</h6>
+
+              <p className="">Develop company website and online presence.</p>
+              <p className="post-meta">Laravel</p>
+            </div>
+            <hr className="my-4" />
+            <div className="post-preview">
+              <h6>Web Developer, Web Team, TREM Internation Headquarters</h6>
+              <h6>Jan 2016 - Dec 2017</h6>
+              <h6>Lagos, Nigeria.</h6>
+
+              <p>Develop applications for reporting and database management.</p>
+              <p className="post-meta">React, Node, Postgresql, AWS</p>
+            </div>
+            <hr className="my-4" />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col lg="8" md="10" className="mx-auto mt-3">
+            <h4>Education</h4>
+            <br />
+            <div className="post-preview">
+              <h6>University of East London</h6>
+              <h6>June 2021 - June 2022</h6>
+              <h6>London, United Kingdom.</h6>
+
+              <p>Msc. Computer Science</p>
+              <p className="post-meta">Gas, Oil, Energy, Engineering.</p>
+            </div>
+            <hr className="my-4" />
+            <div className="post-preview">
+              <h6>University of Port Harcourt</h6>
+              <h6>Oct 2010 - Oct 2015</h6>
+              <h6>Rivers, Nigeria.</h6>
+
+              <p>BE. Gas Engineering</p>
+              <p className="post-meta">Gas, Oil, Energy, Engineering.</p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <AppSocial />
+      <AppFooter />
+    </Fragment>
+  );
+};
 
 export default Home;

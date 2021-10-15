@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Container } from "reactstrap";
-import { AppNavbar, AppFooter } from "../containers";
+import { AppNavbar, AppFooter } from "../components/organisms";
 import { AppLoader } from '../components/molecules';
 
 const PageNotFound = () => {

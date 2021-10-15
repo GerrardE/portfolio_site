@@ -16,9 +16,9 @@ function loading_stop_object(loading) {
     }
 }
 
-const count_down = () => (dispatch) => {
+const count_down = (time) => (dispatch) => {
     dispatch(loading_start_object(true))
-    setTimeout(() => dispatch(loading_stop_object(false)), 3000);
+    setTimeout(() => dispatch(loading_stop_object(false)), time);
 }
 
 export {

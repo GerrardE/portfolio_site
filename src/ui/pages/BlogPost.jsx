@@ -3,8 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as actions from '@domain/redux/actions/get_posts';
-import { AppNavbar, AppFooter } from '../containers';
-import "@ui/assets/css/blog.css";
+import { AppNavbar, AppFooter } from '../components/organisms';
 import { BlogPostItem } from '../components/molecules';
 
 const BlogPost = (props) => {

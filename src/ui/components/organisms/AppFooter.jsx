@@ -20,9 +20,6 @@ const AppFooter = () => {
             <Link href to='/'>Home</Link>
           </li>
           <li className="list-inline-item">
-            <Link href to='/about'>About</Link>
-          </li>
-          <li className="list-inline-item">
             <Link href to='/blog'>Blog</Link>
           </li>
           <li className="list-inline-item">

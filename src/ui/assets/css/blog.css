@@ -266,3 +266,73 @@ footer .copyright {
     font-size: 16px;
     padding: 25px 35px;
 }
+/* NAVBAR*/
+.navbar-brand {
+    color: #0D3F71;
+    font-family: 'Nunito', 'Helvetica', 'Arial', 'sans-serif';
+    font-weight: 200;
+    letter-spacing: 1px;
+  }
+  
+   .navbar-brand:hover,  .navbar-brand:focus {
+    color: #467AB6;
+  }
+  
+   .navbar-toggler {
+    font-size: 12px;
+    padding: 8px 10px;
+    color: #0d3f71;
+  }
+  
+   .navbar-nav > li > a {
+    font-size: 11px;
+    font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  
+   .navbar-nav > li > a.active {
+    color: #0D3F71 !important;
+    background-color: transparent;
+  }
+  
+   .navbar-nav > li > a.active:hover {
+    background-color: transparent;
+  }
+  
+   .navbar-nav > li > a,
+   .navbar-nav > li > a:focus {
+    color: #0d3f71;
+  }
+  
+   .navbar-nav > li > a:hover,
+   .navbar-nav > li > a:focus:hover {
+    color: #0D3F71;
+  }
+
+/* FOOTER */
+footer {
+    padding: 25px 0;
+    text-align: center;
+    color: #fff;
+    background-color: #0d3f71;
+  }
+  
+  footer p {
+    font-size: 12px;
+    margin: 0;
+  }
+  
+  footer ul {
+    margin-bottom: 0;
+  }
+  
+  footer ul li a {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+  }
+  
+  footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li a.active {
+    text-decoration: none;
+  }
+  

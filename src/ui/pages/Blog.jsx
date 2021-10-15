@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import * as actions from '@domain/redux/actions/get_posts';
 import * as loader_actions from '@domain/redux/actions/loader';
-import { AppNavbar, AppFooter, AppHeader } from '../containers';
-import "@ui/assets/css/blog.css";
+import { AppNavbar, AppFooter, AppHeader } from '../components/organisms';
 import { BlogItem, AppPagination, AppLoader } from '../components/molecules';
 
 const Home = () => {
@@ -16,7 +15,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(actions.get_posts())
-    dispatch(loader_actions.count_down())
+    dispatch(loader_actions.count_down(1000))
   }, [dispatch])
 
   const posts = useSelector(state => state.get_posts.posts)
