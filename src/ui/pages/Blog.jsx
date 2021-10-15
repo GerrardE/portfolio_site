@@ -7,7 +7,7 @@ import * as loader_actions from '@domain/redux/actions/loader';
 import { AppNavbar, AppFooter, AppHeader } from '../components/organisms';
 import { BlogItem, AppPagination, AppLoader } from '../components/molecules';
 
-const Home = () => {
+const Blog = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
 
@@ -32,7 +32,7 @@ const Home = () => {
        <AppLoader /> :
     (
       <Fragment>
-        <AppNavbar showBand='false ' />
+        <AppNavbar showBand='false ' {...props} />
         <AppHeader className='masthead custom-masthead'>
           <div className='overlay' />
           <Col lg='7' className='my-auto'>
@@ -44,7 +44,7 @@ const Home = () => {
         {
           posts_loading ? <AppLoader /> :
           (
-            <Container>
+            <Container className="mb-4">
               <div className="clearfix">
                 <AppPagination 
                   className=' '
@@ -56,7 +56,7 @@ const Home = () => {
               </div>
               {
                 currentPosts.map((post) => (
-                  <BlogItem key={uuidv4()} post={post} />
+                  <BlogItem key={uuidv4()} post={post} {...props} />
                 ))
               }
               <div className="clearfix">
@@ -71,10 +71,10 @@ const Home = () => {
             </Container>
           )
         }
-        <AppFooter />
+        <AppFooter {...props} />
       </Fragment>
     )
   )
 }
 
-export default Home;
+export default Blog;

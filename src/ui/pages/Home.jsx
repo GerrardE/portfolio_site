@@ -1,12 +1,11 @@
 import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Row, Col, Container } from "reactstrap";
-// import {Link} from 'react-router-dom';
 import * as actions from "@domain/redux/actions/loader";
 import { AppLoader } from "@ui/components/molecules";
 import { AppNavbar, AppFooter, AppSocial } from "../components/organisms";
 
-const Home = () => {
+const Home = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,7 +18,7 @@ const Home = () => {
     <AppLoader />
   ) : (
     <Fragment>
-      <AppNavbar showBand="true " />
+      <AppNavbar showBand="true " {...props} />
       <Container>
         <Row>
           <Col lg="8" md="10" className="mx-auto mt-3">
@@ -109,8 +108,8 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      <AppSocial />
-      <AppFooter />
+      <AppSocial {...props} />
+      <AppFooter {...props} />
     </Fragment>
   );
 };

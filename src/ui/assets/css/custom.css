@@ -4,13 +4,14 @@
     left: 0;
     top: 0;
     text-align: center;
+    margin: 50px 0 30px;
 }
 
-@media (min-width: 991px) {
+/* @media (min-width: 991px) {
     .app-band {
         margin: 50px 0 30px;
     }
-}
+} */
 
 .app-loader{
     margin-top: 15%;
@@ -144,4 +145,9 @@ div.resume-page.card {
 
 .mb-100 {
     margin-bottom: 100px;
+}
+
+.px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }

@@ -1,13 +1,13 @@
 import React, { Fragment, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import { Container } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as actions from '@domain/redux/actions/get_posts';
 import { AppNavbar, AppFooter } from '../components/organisms';
 import { BlogPostItem } from '../components/molecules';
 
-const BlogPost = (props) => {
-  const {match} = props;
+const BlogPost = ({ match, history }) => {
   const {params} = match;
   const { id } = params
   
@@ -22,20 +22,23 @@ const BlogPost = (props) => {
 
   return (
     <Fragment>
-      <AppNavbar showBand='true ' />
-      <BlogPostItem post={post} loading={loading} />
-      <hr />
-      <div className="clearfix container col-lg-6 col-md-6 mx-auto">
-        <Link to='/blog' className="btn btn-secondary btn-xl float-right">&larr; Back</Link>
-      </div>
-      <br />
-      <AppFooter />
+      <AppNavbar showBand='true' history={history} />
+      <Container>
+        <BlogPostItem post={post} loading={loading} history={history} />
+        <hr />
+        <div className='mx-auto col-md-10 col-lg-8 text-right'>
+          <Link to="#" onClick={() => history.push("/blog")} className='btn btn-xl'>&larr; Back</Link>
+        </div>
+        <br />
+      </Container>
+      <AppFooter history={history} />
     </Fragment>
   )
 }
 
 BlogPost.propTypes = {
   match: PropTypes.oneOfType([PropTypes.string, PropTypes.any]),
+  history: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
 }
 
 BlogPost.defaultProps = {

@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 import AppBand from './AppBand';
 
-const AppNavbar = ({ showBand }) => {
+const AppNavbar = ({ showBand, history }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -22,22 +22,19 @@ const AppNavbar = ({ showBand }) => {
     <div>
       <Navbar color='light' fixed='top' light expand="md">
         <Container>
-          <NavbarBrand href="/">{brand}</NavbarBrand>
+          <NavbarBrand onClick={()=>history.push("/")}>{brand}</NavbarBrand>
 
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/">Home</NavLink>
-              </NavItem>
-              {/* <NavItem>
-                <NavLink href="/about">About</NavLink>
-              </NavItem> */}
-              <NavItem>
-                <NavLink href="/blog">Blog</NavLink>
+                <NavLink onClick={()=>history.push("/")}>Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/contact">Contact</NavLink>
+                <NavLink onClick={()=>history.push("/blog")}>Blog</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink onClick={()=>history.push("/contact")}>Contact</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -51,7 +48,8 @@ const AppNavbar = ({ showBand }) => {
 }
 
 AppNavbar.propTypes = {
-  showBand: PropTypes.string
+  showBand: PropTypes.string,
+  history: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
 }
 
 AppNavbar.defaultProps = {

@@ -4,9 +4,8 @@ import { Container, Row } from "reactstrap";
 import * as actions from '@domain/redux/actions/loader';
 import {AppLoader} from '@ui/components/molecules';
 import { AppNavbar, AppFooter, AppSocial } from "../components/organisms";
-// import "@ui/assets/css/blog.css";
 
-const Contact = () => {
+const Contact = (props) => {
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -20,7 +19,7 @@ const Contact = () => {
       <AppLoader /> :
     (
       <Fragment>
-        <AppNavbar showBand='false ' />
+        <AppNavbar showBand='false ' {...props} />
         <Container fluid className="contact-masthead">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15854.881660843388!2d3.3817129769831986!3d6.556935474121817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8d7e0016f285%3A0x8d7bbd27a2060c4f!2sGbagada%2C%20Lagos!5e0!3m2!1sen!2sng!4v1596109204000!5m2!1sen!2sng"
@@ -110,10 +109,10 @@ const Contact = () => {
               </form>
             </div>
           </Row>
-          <AppSocial />
+          <AppSocial {...props} />
         </Container>
         <hr />
-        <AppFooter />
+        <AppFooter {...props} />
       </Fragment>
     )
   );
