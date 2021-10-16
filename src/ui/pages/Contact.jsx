@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import { Container, Row } from "reactstrap";
 import * as actions from '@domain/redux/actions/loader';
@@ -9,10 +9,20 @@ const Contact = (props) => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch(actions.count_down(1000))
-  },[dispatch])
+    dispatch(actions.count_down(1000));
+  },[dispatch]);
   
-  const loading = useSelector(state => state.loader.loading)
+  const loading = useSelector(state => state.loader.loading);
+
+  const [emailForm, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    msg: "",
+    sum: 0,
+  });
+
+  const [errors, setErrors] = useState({ name: "", email: "", message: "", phone: "", sum: ""});
 
   return (
     loading ? 
@@ -36,20 +46,22 @@ const Contact = (props) => {
                 Want to get in touch? Fill out the form below to send me a message
                 and I will get back to you as soon as possible!
               </p>
-              <form name="sentMessage" id="contactForm" noValidate>
+              <form onSubmit={()=>{}}>
                 <div className="control-group">
                   <div className="form-group floating-label-form-group controls">
                     <label htmlFor="Name">
-                      Name
+                      Full Name
                       <input
                         type="text"
                         className="form-control"
                         id="name"
+                        minLength="2"
+                        onChange={(e) => setForm({...emailForm, name: e.target.value.trim()})}
                         required
                         data-validation-required-message="Please enter your name."
                       />
                     </label>
-                    <p className="help-block text-danger" />
+                    { errors && errors.name?.length>1 ? <p className="help-block text-danger">{errors.name}</p> : ""}
                   </div>
                 </div>
                 <div className="control-group">
@@ -60,11 +72,12 @@ const Contact = (props) => {
                         type="email"
                         className="form-control"
                         id="email"
+                        onChange={(e) => setForm({...emailForm, email: e.target.value.trim()})}
                         required
                         data-validation-required-message="Please enter your email address."
                       />
                     </label>
-                    <p className="help-block text-danger" />
+                    { errors && errors.email?.length>1 ? <p className="help-block text-danger">{errors.email}</p> : ""}
                   </div>
                 </div>
                 <div className="control-group">
@@ -75,11 +88,15 @@ const Contact = (props) => {
                         type="tel"
                         className="form-control"
                         id="phone"
+                        minLength="10"
+                        maxLength="25"
+                        onChange={(e) => setForm({...emailForm, phone: e.target.value.trim()})}
                         required
+                        placeholder="e.g +234 801 751 9878"
                         data-validation-required-message="Please enter your phone number."
                       />
                     </label>
-                    <p className="help-block text-danger" />
+                    { errors && errors.phone?.length>1 ? <p className="help-block text-danger">{errors.phone}</p> : ""}
                   </div>
                 </div>
                 <div className="control-group">
@@ -89,12 +106,31 @@ const Contact = (props) => {
                       <textarea
                         rows="3"
                         className="form-control"
-                        id="message"
+                        minLength="10"
+                        maxLength="500"
+                        id="msg"
+                        onChange={(e) => setForm({...emailForm, msg: e.target.value.trim()})}
                         required
                         data-validation-required-message="Please enter a message."
                       />
                     </label>
-                    <p className="help-block text-danger" />
+                    { errors && errors.msg?.length>1 ? <p className="help-block text-danger">{errors.msg}</p> : ""}
+                  </div>
+                </div>
+                <div className="control-group">
+                  <div className="form-group floating-label-form-group controls">
+                    <label htmlFor="sum">
+                      What is the sum of 45 and 6?
+                      <input
+                        type="number"
+                        className="form-control"
+                        id="sum"
+                        onChange={(e) => setForm({...emailForm, sum: Number(e.target.value)})}
+                        required
+                        data-validation-required-message="Please do the math."
+                      />
+                    </label>
+                    { errors && errors.sum?.length>1 ? <p className="help-block text-danger">{errors.sum}</p> : ""}
                   </div>
                 </div>
                 <br />
@@ -103,6 +139,26 @@ const Contact = (props) => {
                   type="submit"
                   className="btn btn-secondary btn-xl"
                   id="sendMessageButton"
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+                    if(emailForm.name.length < 2){
+                      setErrors({...errors, name: "Name cannot be less than 2 characters..."});
+                    } else if(!re.test(emailForm.email)){
+                      setErrors({...errors, name: "", email: "Email is invalid..."})
+                    } else if(emailForm.phone.length < 10){
+                      setErrors({...errors, email: "", phone: "Phone number cannot be less than 10 characters..."})
+                    } else if(emailForm.msg.length < 10 || emailForm.msg.length > 500){
+                      setErrors({...errors, phone: "", msg: "Message must be greater than 10 and less than 500 characters..."})
+                    } else if (emailForm.sum !== (45+6)) {
+                      setErrors({...errors, msg: "", sum: "Please sum 45 and 6 correctly..."})
+                    } else {
+                      setErrors({name: "", email: "", message: "", phone: "", sum: ""});
+                      // console.log(emailForm)
+                    }
+                  }}
                 >
                   Send
                 </button>

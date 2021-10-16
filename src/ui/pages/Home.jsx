@@ -29,7 +29,7 @@ const Home = (props) => {
                 experience solving exciting problems with Javascript and Python.
                 I also mentor young and aspiring engineers to
                 become Full-Stack Javascript Engineers. In SRE/DevOps, I have a
-                core focus on infrastructure and Amazon Web Services.
+                core focus on infrastructure tools and Amazon Web Services.
               </p>
             </div>
           </Col>
