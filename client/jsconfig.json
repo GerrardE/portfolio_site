@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@application": [
+        "../frontend/src/application"
+      ],
+      "@domain": [
+        "../frontend/src/domain"
+      ],
+      "@infrastructure": [
+        "../frontend/src/infrastructure"
+      ],
+      "@ui": [
+        "../frontend/src/ui"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

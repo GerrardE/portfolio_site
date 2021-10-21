@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "metatags",
+  "info": {
+    "name": "metatag"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "posts": {
+      "via": "metatags",
+      "collection": "post"
+    }
+  }
+}

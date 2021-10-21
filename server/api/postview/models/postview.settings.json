@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "postviews",
+  "info": {
+    "name": "postview"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "view": {
+      "type": "integer"
+    },
+    "viewerIp": {
+      "type": "string",
+      "unique": true
+    },
+    "post": {
+      "model": "post",
+      "via": "postviews"
+    }
+  }
+}
