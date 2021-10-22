@@ -1,11 +1,13 @@
+/* eslint no-console: "off" */
 import MESSAGES from '@domain/constants/messages';
-
-const debug = 'console';
 
 const errorHandler = (error) => {
     let { status, message } = error.response;
 
     switch (status) {
+        case 400:
+            message = MESSAGES[400];
+            break;
         case 401:
             message = MESSAGES[401];
             break;
@@ -19,7 +21,7 @@ const errorHandler = (error) => {
             message = MESSAGES[500];
             break;
         default:
-            debug.log("default");
+            console.log("default");
     }
 
     return message;

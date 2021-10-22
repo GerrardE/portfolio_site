@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Container, Col } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import * as actions from "@domain/redux/actions/get_posts";
-import * as loader_actions from "@domain/redux/actions/loader";
+import { get_posts } from "@domain/redux/actions/posts";
+import { count_down } from "@domain/redux/actions/loader";
 import { AppNavbar, AppFooter, AppHeader } from "../components/organisms";
 import { BlogItem, AppPagination, AppLoader } from "../components/molecules";
 
@@ -13,12 +13,12 @@ const Blog = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.get_posts());
-    dispatch(loader_actions.count_down(1000));
+    dispatch(get_posts());
+    dispatch(count_down(1000));
   }, [dispatch]);
 
-  const posts = useSelector((state) => state.get_posts.posts);
-  const posts_loading = useSelector((state) => state.get_posts.loading);
+  const posts = useSelector((state) => state.posts.posts);
+  const posts_loading = useSelector((state) => state.posts.loading);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
