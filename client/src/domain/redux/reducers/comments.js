@@ -1,7 +1,7 @@
 import * as actions from "../actions/comments";
 
 const initialState = {
-  comments: {},
+  comment: {},
   count: 0,
   errors: "",
   loading: false,
@@ -18,7 +18,7 @@ export default function (state = initialState, action) {
     case actions.POST_COMMENT_SUCCESS:
       return {
         ...state,
-        comments: action.payload,
+        comment: action.payload,
       };
 
     case actions.POST_COMMENT_FAIL:

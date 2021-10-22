@@ -51,6 +51,28 @@ const BlogPost = (props) => {
     sum: "",
   });
 
+  const returnCommments = (post) => {
+    const commentItems = post.comments.map((comment) => {
+      if (comment.isapproved) {
+        return (
+          <Fragment key={comment._id}>
+            <hr />
+            <small>
+              {comment.body}
+              <i className="d-flex">~ {comment.name}</i>
+            </small>
+          </Fragment>
+        );
+      }
+    });
+
+    if(commentItems<1){
+      return <Fragment />;
+    }
+
+    return <Fragment>{commentItems}</Fragment>;
+  }
+
   return (
     <Fragment>
       <AppNavbar showBand="true" {...props} />
@@ -107,10 +129,10 @@ const BlogPost = (props) => {
                   tabIndex="0"
                 >
                   <i className="far fa-comment fa-custom ml-3" />{" "}
-                  {post.comments.length}
+                  {(post.comments.filter(p=>p.isapproved)).length}
                 </small>
 
-                <div className="text-right">
+                <div className="text-right mb-2">
                   <Link
                     to="#"
                     onClick={() => history.push("/blog")}
@@ -240,7 +262,7 @@ const BlogPost = (props) => {
                         type="submit"
                         className="btn btn-secondary btn-xl"
                         id="sendCommentButton"
-                        onClick={(e) => {
+                        onClick={async (e) => {
                           e.preventDefault();
 
                           const re =
@@ -281,6 +303,7 @@ const BlogPost = (props) => {
                             dispatch(
                               post_comment({ ...commentForm, post: id })
                             );
+                            setCommentOpen(!isCommentOpen);
                           }
                         }}
                       >
@@ -291,18 +314,9 @@ const BlogPost = (props) => {
                     <Fragment />
                   )}
 
-                  <h4 className="mt-4">Comments</h4>
-                  {post.comments.map((comment) => {
-                    return (
-                      <Fragment key={comment._id}>
-                        <hr />
-                        <p>
-                          {comment.body}
-                          <i className="d-flex">~ {comment.name}</i>
-                        </p>
-                      </Fragment>
-                    );
-                  })}
+                  {
+                    returnCommments(post)
+                  }
                 </div>
               </Col>
             </article>
