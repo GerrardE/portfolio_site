@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "name": "comment",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "private": true
+    },
+    "body": {
+      "type": "text"
+    },
+    "post": {
+      "model": "post",
+      "via": "comments"
+    },
+    "isapproved": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/postclaps",
+      "handler": "postclap.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/postclaps/count",
+      "handler": "postclap.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/postclaps/:id",
+      "handler": "postclap.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/postclaps",
+      "handler": "postclap.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/postclaps/:id",
+      "handler": "postclap.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/postclaps/:id",
+      "handler": "postclap.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

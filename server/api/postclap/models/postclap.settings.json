@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "postclaps",
+  "info": {
+    "name": "postclap",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clap": {
+      "type": "integer",
+      "max": 1
+    },
+    "post": {
+      "model": "post",
+      "via": "postclaps"
+    },
+    "clapIp": {
+      "type": "string",
+      "unique": false
+    }
+  }
+}
