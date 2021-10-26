@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: './src/index.jsx',
   output: {
-    filename: 'index_bundle.js',
+    filename: 'index.js',
     path: path.join(__dirname, './dist'),
     publicPath: '/',
   },
