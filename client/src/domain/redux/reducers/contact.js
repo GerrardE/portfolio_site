@@ -6,7 +6,7 @@ const initialState = {
   loading: false
 }
 
-export default function (state = initialState, action) {
+function contact (state = initialState, action) {
   switch (action.type) {
     case actions.POST_CONTACT_LOADING:
       return {
@@ -29,3 +29,5 @@ export default function (state = initialState, action) {
     default: return state;
   }
 }
+
+export default contact;

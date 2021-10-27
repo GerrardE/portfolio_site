@@ -4,7 +4,7 @@ const initialState = {
   loading: false
 }
 
-export default function (state = initialState, action) {
+function loader (state = initialState, action) {
   switch (action.type) {
     case actions.LOADING_START:
       return {
@@ -21,3 +21,5 @@ export default function (state = initialState, action) {
     default: return state;
   }
 }
+
+export default  loader;

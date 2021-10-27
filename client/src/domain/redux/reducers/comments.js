@@ -7,7 +7,7 @@ const initialState = {
   loading: false,
 };
 
-export default function (state = initialState, action) {
+function comments (state = initialState, action) {
   switch (action.type) {
     case actions.POST_COMMENT_LOADING:
       return {
@@ -43,3 +43,5 @@ export default function (state = initialState, action) {
       return state;
   }
 }
+
+export default comments;

@@ -1,7 +1,0 @@
-{
-  "name": "ezeugwagerrard",
-  "description": "My portfolio website",
-  "scripts": {
-    "postdeploy": "npm run build"
-  }
-}
