@@ -25,11 +25,31 @@ const Blog = (props) => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const returnPosts = (p) => {
+    if(p.length < 1) {
+      return <center>No post here yet.</center>
+    }
+    
+    return p.map((post) => (
+      <BlogItem key={post.id} post={post} {...props} />
+    ))
+  }
+  
   return (
     <Fragment>
       <AppNavbar showBand="false " {...props} />
       {posts_loading ? (
+        <Fragment>
+        <AppHeader className="masthead custom-masthead">
+          <div className="overlay" />
+          <Col lg="7" className="my-auto">
+            <div className="site-heading">
+              <h1>Blog</h1>
+            </div>
+          </Col>
+        </AppHeader>
         <AppLoader />
+        </Fragment>
       ) : (
         <Fragment>
           <AppHeader className="masthead custom-masthead">
@@ -51,9 +71,7 @@ const Blog = (props) => {
                 currentPage={currentPage}
               />
             </div>
-            {currentPosts.map((post) => (
-              <BlogItem key={post.id} post={post} {...props} />
-            ))}
+            {returnPosts(currentPosts)}
             <div className="clearfix">
               <AppPagination
                 className=" "

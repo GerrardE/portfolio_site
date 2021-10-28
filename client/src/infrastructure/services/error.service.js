@@ -2,7 +2,11 @@
 import MESSAGES from '@domain/constants/messages';
 
 const errorHandler = (error) => {
-    let { status, message } = error.response;
+    if(!error.response) {
+        return "Unknown Error"
+    }
+
+    let { status = 0, message = "" } = error.response;
 
     switch (status) {
         case 400:
@@ -21,7 +25,7 @@ const errorHandler = (error) => {
             message = MESSAGES[500];
             break;
         default:
-            console.log("default");
+            console.log("Uncaught Error");
     }
 
     return message;

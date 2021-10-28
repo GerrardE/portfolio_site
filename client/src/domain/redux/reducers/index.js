@@ -4,6 +4,7 @@ import comments from './comments';
 import postclaps from './postclaps';
 import postviews from './postviews';
 import loader from './loader';
+import about from './about';
 
 export default combineReducers({
   posts,
@@ -11,4 +12,5 @@ export default combineReducers({
   postclaps,
   postviews,
   loader,
+  about,
 })

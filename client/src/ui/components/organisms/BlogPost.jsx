@@ -64,7 +64,7 @@ const BlogPost = (props) => {
           </Fragment>
         );
       }
-      return <Fragment />
+      return ""
     });
 
     if(commentItems<1){
