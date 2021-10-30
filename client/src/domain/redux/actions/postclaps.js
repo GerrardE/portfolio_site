@@ -32,7 +32,7 @@ const post_clap = (data) => async (dispatch) => {
     const res = await apiService.postResource("/postclaps", data);
     dispatch(clap_object(res.data));
     dispatch(clap_loading_object(false));
-    dispatch(get_clap_count())
+    dispatch(get_clap_count(data.post));
   } catch (error) {
     dispatch(clap_error_object(error.message));
     dispatch(clap_loading_object(false));
@@ -57,15 +57,17 @@ function clap_count_object(payload) {
   };
 }
 
-const get_clap_count = () => async (dispatch) => {
-  dispatch(clap_loading_object(true));
-  try {
-    const res = await apiService.getResource("/postclaps/count");
-    dispatch(clap_count_object(res.data));
-    dispatch(clap_loading_object(false));
-  } catch (error) {
-    dispatch(clap_count_error_object(error.message));
-    dispatch(clap_loading_object(false));
+const get_clap_count = (id) => async (dispatch) => {
+  if (id) {
+    dispatch(clap_loading_object(true));
+    try {
+      const res = await apiService.getResource(`/postclaps/count?post=${id}`);
+      dispatch(clap_count_object(res.data));
+      dispatch(clap_loading_object(false));
+    } catch (error) {
+      dispatch(clap_count_error_object(error.message));
+      dispatch(clap_loading_object(false));
+    }
   }
 };
 

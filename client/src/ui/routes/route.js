@@ -1,4 +1,4 @@
-import { Home, Blog, BlogPost, Contact, PageNotFound } from "../pages";
+import { Home, Blog, BlogPost, Contact, Category, PageNotFound } from "../pages";
 
 const routes = [
     {
@@ -12,6 +12,10 @@ const routes = [
     {
         path: '/blog/:id',
         component: BlogPost
+    },
+    {
+        path: '/blog/:categoryid/category',
+        component: Category
     },
     {
         path: '/contact',

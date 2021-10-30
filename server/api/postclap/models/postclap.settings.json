@@ -17,8 +17,8 @@
       "max": 1
     },
     "post": {
-      "model": "post",
-      "via": "postclaps"
+      "via": "postclaps",
+      "model": "post"
     },
     "clapIp": {
       "type": "string",

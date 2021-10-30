@@ -29,10 +29,10 @@ function view_object(payload) {
 const post_view = (data) => async (dispatch) => {
   dispatch(view_loading_object(true));
   try {
-    const res = await apiService.postResource("/postviews", data);
+    const res = await apiService.postResource('/postviews', data);
     dispatch(view_object(res.data));
     dispatch(view_loading_object(false));
-    dispatch(get_view_count())
+    dispatch(get_view_count(res.data.post.id))
   } catch (error) {
     dispatch(view_error_object(error.message));
     dispatch(view_loading_object(false));
@@ -57,10 +57,10 @@ function view_count_object(payload) {
   };
 }
 
-const get_view_count = () => async (dispatch) => {
+const get_view_count = (id) => async (dispatch) => {
   dispatch(view_loading_object(true));
   try {
-    const res = await apiService.getResource("/postviews/count");
+    const res = await apiService.getResource(`/postviews/count?post=${id}`);
     dispatch(view_count_object(res.data));
     dispatch(view_loading_object(false));
   } catch (error) {

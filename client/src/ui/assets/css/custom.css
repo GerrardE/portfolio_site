@@ -165,7 +165,7 @@ div.resume-page.card {
 }
 
 .badge:hover {
-    /* cursor: pointer; */
+    cursor: pointer;
 }
 
 .fa-custom {

@@ -59,10 +59,10 @@ function comment_count_object(payload) {
   };
 }
 
-const get_comment_count = () => async (dispatch) => {
+const get_comment_count = (id) => async (dispatch) => {
   dispatch(comment_loading_object(true));
   try {
-    const res = await apiService.getResource('/comments/count');
+    const res = await apiService.getResource(`/comments/count?post=${id}`);
     dispatch(comment_count_object(res.data));
     dispatch(comment_loading_object(false));
   } catch (error) {

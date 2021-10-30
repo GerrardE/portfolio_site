@@ -17,11 +17,11 @@
     },
     "viewIp": {
       "type": "string",
-      "unique": true
+      "unique": false
     },
     "post": {
-      "model": "post",
-      "via": "postviews"
+      "via": "postviews",
+      "model": "post"
     }
   }
 }

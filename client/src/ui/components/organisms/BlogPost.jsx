@@ -8,9 +8,10 @@ import PropTypes from "prop-types";
 import { get_post } from "@domain/redux/actions/posts";
 import { post_comment } from "@domain/redux/actions/comments";
 import { get_clap_count, post_clap } from "@domain/redux/actions/postclaps";
-import { get_view_count, post_view } from "@domain/redux/actions/postviews";
+import { post_view } from "@domain/redux/actions/postviews";
 import { AppNavbar, AppFooter } from ".";
 import AppLoader from "../molecules/AppLoader";
+import { Seo } from "../molecules";
 
 const BlogPost = (props) => {
   const {
@@ -22,10 +23,11 @@ const BlogPost = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(post_view({ post: id, view: 1 }));
-    dispatch(get_post(id));
-    dispatch(get_view_count(id));
-    dispatch(get_clap_count(id));
+    if (id) {
+      dispatch(post_view({ post: id, view: 1 }));
+      dispatch(get_post(id));
+      dispatch(get_clap_count(id));
+    }
   }, [dispatch, id]);
 
   const { post, loading } = useSelector((state) => state.posts);
@@ -64,18 +66,37 @@ const BlogPost = (props) => {
           </Fragment>
         );
       }
-      return ""
+      return "";
     });
 
-    if(commentItems<1){
+    if (commentItems < 1) {
       return <Fragment />;
     }
 
     return <Fragment>{commentItems}</Fragment>;
+  };
+
+  const seo = {
+    description: "",
+    url: "",
+    title: "",
+    image: "",
+    keywords: "",
+  };
+
+  if (Object.keys(post).length > 0) {
+    seo.description = post.subtitle;
+    seo.url = `${process.env.REACT_APP_BASE_URL}/blog/${post.id}`;
+    seo.title = post.title;
+    seo.image = post.cover.url;
+    if (post.metatags.length > 0) {
+      post.metatags.forEach((m) => (seo.keywords += `${m.name},`));
+    }
   }
 
   return (
     <Fragment>
+      <Seo seo={seo} />
       <AppNavbar showBand="true" {...props} />
       {loading ? (
         <AppLoader />
@@ -95,9 +116,13 @@ const BlogPost = (props) => {
                   {post.body}
                 </ReactMarkdown>
 
-                {post.metatags.map((metatag) => (
-                  <Badge key={metatag._id} className="mr-2">
-                    {metatag.name}
+                {post.categories.map((c) => (
+                  <Badge
+                    key={c.id}
+                    className="mr-2"
+                    onClick={() => history.push(`/blog/${c.id}/category`)}
+                  >
+                    {c.name}
                   </Badge>
                 ))}
 
@@ -130,7 +155,7 @@ const BlogPost = (props) => {
                   tabIndex="0"
                 >
                   <i className="far fa-comment fa-custom ml-3" />{" "}
-                  {(post.comments.filter(p=>p.isapproved)).length}
+                  {post.comments.filter((p) => p.isapproved).length}
                 </small>
 
                 <div className="text-right mb-2">
@@ -142,7 +167,7 @@ const BlogPost = (props) => {
                     &larr; Posts
                   </Link>
                 </div>
-                <div>
+                <div className="mb-4">
                   {isCommentOpen ? (
                     <form onSubmit={() => {}}>
                       <p className="my-4">Leave a comment</p>
@@ -315,9 +340,7 @@ const BlogPost = (props) => {
                     <Fragment />
                   )}
 
-                  {
-                    returnCommments(post)
-                  }
+                  {returnCommments(post)}
                 </div>
               </Col>
             </article>
