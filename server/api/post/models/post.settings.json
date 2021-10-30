@@ -38,12 +38,13 @@
       "collection": "category"
     },
     "metatags": {
-      "collection": "metatag",
       "via": "posts",
+      "collection": "metatag",
       "dominant": true
     },
     "subtitle": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "references": {
       "type": "richtext"

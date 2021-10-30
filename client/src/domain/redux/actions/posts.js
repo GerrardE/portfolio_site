@@ -29,11 +29,19 @@ function posts_error_object (message) {
 // GET POST
 const GET_POST_LOADING = 'GET_POST_LOADING';
 const GET_POST_SUCCESS = 'GET_POST_SUCCESS';
+const GET_CATEGORY_POSTS_SUCCESS = 'GET_CATEGORY_POSTS_SUCCESS';
 const GET_POST_FAIL = 'GET_POST_FAIL';
 
 function post_object (posts) {
   return {
     type: GET_POST_SUCCESS,
+    payload: posts
+  }
+}
+
+function category_posts_object (posts) {
+  return {
+    type: GET_CATEGORY_POSTS_SUCCESS,
     payload: posts
   }
 }
@@ -52,15 +60,21 @@ function post_error_object (message) {
   }
 }
 
-const get_posts = () => async (dispatch) => {
+const get_posts = (id) => async (dispatch) => {
   dispatch(posts_loading_object(true))
   try {
-    const res = await apiService.getResource('/posts')
-    dispatch(posts_object(res.data));
-    dispatch(posts_loading_object(false))
+    let res; 
+    if(id !== undefined) {
+      res = await apiService.getResource(`/categories/${id}`);
+      dispatch(category_posts_object(res.data));
+    } else {
+      res = await apiService.getResource('/posts?_sort=createdAt:DESC');
+      dispatch(posts_object(res.data));
+    }
+    dispatch(posts_loading_object(false));
   } catch (error) {
-    dispatch(posts_error_object(error.message))
-    dispatch(posts_loading_object(false))
+    dispatch(posts_error_object(error.message));
+    dispatch(posts_loading_object(false));
   }
 }
 
@@ -82,6 +96,7 @@ export {
   GET_POST_LOADING,
   GET_POST_FAIL,
   GET_POST_SUCCESS,
+  GET_CATEGORY_POSTS_SUCCESS,
   GET_POSTS_LOADING,
   GET_POSTS_FAIL,
   GET_POSTS_SUCCESS
