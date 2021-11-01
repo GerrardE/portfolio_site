@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import {
   Collapse,
   Navbar,
@@ -8,55 +8,78 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Container
-} from 'reactstrap';
-import AppBand from './AppBand';
+  Container,
+} from "reactstrap";
+import AppBand from "./AppBand";
+import { Image } from "../atoms";
 
 const AppNavbar = ({ showBand, history, match }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-  const brand = 'ezeugwagerrard'
 
-  const re = new RegExp(/^\/blog\/?:?(\w+)?\/?/, 'g');
+  const re = new RegExp(/^\/blog\/?:?(\w+)?\/?/, "g");
 
   return (
     <div>
-      <Navbar color='light' fixed='top' light expand='md'>
+      <Navbar color="light" fixed="top" light expand="md">
         <Container>
-          <NavbarBrand onClick={()=>history.push('/')} className={match.path === '/'? 'active' : ''}>{brand}</NavbarBrand>
+          <NavbarBrand
+            onClick={() => history.push("/")}
+            className={match.path === "/" ? "active" : ""}
+          >
+            <Image
+              imageUrl="./ezeugwa-gerrard-logo.svg"
+              altText="ezeugwagerrard logo"
+              width="150"
+              className="image-responsive"
+            />
+          </NavbarBrand>
 
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className='ml-auto' navbar>
+            <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink onClick={()=>history.push('/')} className={match.path === '/'? 'active' : ''}>Home</NavLink>
+                <NavLink
+                  onClick={() => history.push("/")}
+                  className={match.path === "/" ? "active" : ""}
+                >
+                  Home
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink onClick={()=>history.push('/blog')} className={re.test(match.path) ? 'active' : ''}>Blog</NavLink>
+                <NavLink
+                  onClick={() => history.push("/blog")}
+                  className={re.test(match.path) ? "active" : ""}
+                >
+                  Blog
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink onClick={()=>history.push('/contact')} className={match.path === '/contact'? 'active' : ''}>Contact</NavLink>
+                <NavLink
+                  onClick={() => history.push("/contact")}
+                  className={match.path === "/contact" ? "active" : ""}
+                >
+                  Contact
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
         </Container>
       </Navbar>
-      {
-        showBand.trim() === 'true' ? <AppBand /> : ''
-      }
+      {showBand.trim() === "true" ? <AppBand /> : ""}
     </div>
   );
-}
+};
 
 AppNavbar.propTypes = {
   showBand: PropTypes.string,
   history: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
   match: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
-}
+};
 
 AppNavbar.defaultProps = {
-  showBand: 'false'
-}
+  showBand: "false",
+};
 
 export default AppNavbar;
