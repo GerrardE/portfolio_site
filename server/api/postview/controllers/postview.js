@@ -18,14 +18,14 @@ module.exports = {
       let entity;
 
       const data = { ...ctx.request.body, viewIp: ctx.request.ip}
+      console.log(ctx.request);
+      // const postViews = await strapi.services.postview.find({ viewIp: ctx.request.ip });
       
-      const postViews = await strapi.services.postview.find({ viewIp: ctx.request.ip });
+      // const isViewed = postViews.filter(p => p.viewIp === data.viewIp && p.post.id === data.post);
       
-      const isViewed = postViews.filter(p => p.viewIp === data.viewIp && p.post.id === data.post);
-      
-      if(isViewed.length>0){
-        return isViewed[0];
-      }
+      // if(isViewed.length>0){
+      //   return isViewed[0];
+      // }
       
       entity = await strapi.services.postview.create(data);
 
