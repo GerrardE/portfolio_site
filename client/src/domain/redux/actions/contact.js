@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import { apiService } from "@infrastructure";
 
 // POST CONTACT
@@ -32,9 +33,11 @@ const post_contact = (data) => async (dispatch) => {
     const res = await apiService.postResource("/contacts", data);
     dispatch(contact_object(res.data));
     dispatch(contact_loading_object(false));
+    toast.success("Message sent successfully, I will respond shortly.");
   } catch (error) {
     dispatch(contact_error_object(error.message));
     dispatch(contact_loading_object(false));
+    toast.error("An error occured.");
   }
 };
 

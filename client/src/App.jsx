@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import routes from "@ui/routes/route";
 import store from "@application/config/store/store";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "@ui/assets/css/fontawesome.css";
 
 import "@ui/assets/css/blog.css";
@@ -19,7 +19,7 @@ export default function App() {
       <Provider store={store}>
         <Router>
           <Switch>
-            {routes.map(route => {
+            {routes.map((route) => {
               return (
                 <Route
                   exact
