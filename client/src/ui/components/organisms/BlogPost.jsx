@@ -86,7 +86,7 @@ const BlogPost = (props) => {
 
   if (Object.keys(post).length > 0) {
     seo.description = post.subtitle;
-    seo.url = `${process.env.REACT_APP_BASE_URL}/blog/${post.id}`;
+    seo.url = `${process.env.GATSBY_BASE_URL}/blog/${post.id}`;
     seo.title = post.title;
     seo.image = post.cover.url;
     if (post.metatags.length > 0) {

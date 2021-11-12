@@ -39,7 +39,7 @@ const AppFooter = ({ history, match }) => {
             </Link>
           </li>
         </ul>
-        <Image imageUrl="./ezeugwa-gerrard-logo-white.svg" width="130" className="my-2" />
+        <Image imageUrl="https://res.cloudinary.com/dz9mitahp/image/upload/v1636657770/ezeugwa_gerrard_logo_white_2cd8981d27.svg" width="130" className="my-2" />
         {" "}
         <p>
           &copy;

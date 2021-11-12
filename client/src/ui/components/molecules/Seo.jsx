@@ -4,7 +4,7 @@ import Helmet from "react-helmet";
 const Seo = (props) => {
   const { 
     description = "Articles, tips and tricks to help you on your path to becoming a world-class Software Engineer.", 
-    url = `${process.ENV.REACT_APP_BASE_URL}/blog`,
+    url = `${process.ENV.GATSBY_BASE_URL}/blog`,
     title = "Ezeugwa Gerrard", 
     image = "https://res.cloudinary.com/dz9mitahp/image/upload/v1635609775/small_ezeugwagerrard_f0a822c23e.jpg?7751481.100000024",
     keywords = "Ezeugwa Gerrard's Personal Blog"
