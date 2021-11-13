@@ -1,10 +1,10 @@
 import React from "react";
 import { Container } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import { Image } from "../atoms";
 
-const AppFooter = ({ history, match }) => {
+const AppFooter = ({ location }) => {
   const re = new RegExp(/^\/blog\/?:?(\w+)?\/?/, "gm");
 
   return (
@@ -13,33 +13,30 @@ const AppFooter = ({ history, match }) => {
         <ul className="list-inline">
           <li className="list-inline-item">
             <Link
-              to="#"
-              onClick={() => history.push("/")}
-              className={match.path === "/" ? "active" : ""}
+              to="/"
+              className={location.pathname === "/" ? "active" : ""}
             >
               Home
             </Link>
           </li>
           <li className="list-inline-item">
             <Link
-              to="#"
-              onClick={() => history.push("/blog")}
-              className={re.test(match.path) ? "active" : ""}
+              to="/blog"
+              className={re.test(location.pathname) ? "active" : ""}
             >
               Blog
             </Link>
           </li>
           <li className="list-inline-item">
             <Link
-              to="#"
-              onClick={() => history.push("/contact")}
-              className={match.path === "/contact" ? "active" : ""}
+              to="/contact"
+              className={location.pathname === "/contact" ? "active" : ""}
             >
               Contact
             </Link>
           </li>
         </ul>
-        <Image imageUrl="./ezeugwa-gerrard-logo-white.svg" width="130" className="my-2" />
+        <Image imageUrl="https://res.cloudinary.com/dz9mitahp/image/upload/v1636657770/ezeugwa_gerrard_logo_white_2cd8981d27.svg" width="130" className="my-2" />
         {" "}
         <p>
           &copy;

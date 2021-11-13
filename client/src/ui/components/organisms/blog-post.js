@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Link } from "react-router-dom";
+import { Link, navigate } from "gatsby";
 import { Col, Badge, Tooltip, Container } from "reactstrap";
 import PropTypes from "prop-types";
 import { get_post } from "@domain/redux/actions/posts";
@@ -15,10 +15,9 @@ import { Seo } from "../molecules";
 
 const BlogPost = (props) => {
   const {
-    match: { params },
-    history,
+    pageContext,
   } = props;
-  const { id } = params;
+  const { id } = pageContext;
 
   const dispatch = useDispatch();
 
@@ -36,7 +35,7 @@ const BlogPost = (props) => {
     postclaps: { count: postclapcount },
   } = useSelector((state) => state);
 
-  const [isCommentOpen, setCommentOpen] = useState(false);
+  const [isCommentOpen, setCommentOpen] = useState(true);
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const [commentForm, setForm] = useState({
@@ -86,7 +85,7 @@ const BlogPost = (props) => {
 
   if (Object.keys(post).length > 0) {
     seo.description = post.subtitle;
-    seo.url = `${process.env.REACT_APP_BASE_URL}/blog/${post.id}`;
+    seo.url = `${process.env.GATSBY_BASE_URL}/blog/${post.id}`;
     seo.title = post.title;
     seo.image = post.cover.url;
     if (post.metatags.length > 0) {
@@ -120,13 +119,13 @@ const BlogPost = (props) => {
                   <Badge
                     key={c.id}
                     className="mr-2"
-                    onClick={() => history.push(`/blog/${c.id}/category`)}
+                    onClick={() => navigate(`/blog/${c.id}/category`)}
                   >
                     {c.name}
                   </Badge>
                 ))}
 
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                <ReactMarkdown remarkPlugins={[remarkGfm]} className="mt-4">
                   {post.references}
                 </ReactMarkdown>
                 <Tooltip
@@ -160,8 +159,7 @@ const BlogPost = (props) => {
 
                 <div className="text-right mb-2">
                   <Link
-                    to="#"
-                    onClick={() => history.push("/blog")}
+                    to="/blog"
                     className="btn btn-xl"
                   >
                     &larr; Posts
@@ -356,7 +354,7 @@ const BlogPost = (props) => {
 
 BlogPost.propTypes = {
   match: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
-  history: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
+  navigate: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
 };
 
 export default BlogPost;

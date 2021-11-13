@@ -2,14 +2,14 @@ import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import { Row, Col } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link } from "gatsby";
 
-const BlogItem = ({ post, history }) => {
+const BlogItem = ({ post }) => {
   return (
     <Row>
       <Col lg="8" md="10" className="mx-auto">
         <div className="post-preview">
-          <Link to="#" onClick={() => history.push(`/blog/${post.id}`)}>
+          <Link to={`/blog/${post.id}`}>
             <h3 className="post-title">{post.title}</h3>
             <h4 className="post-subtitle">{post.subtitle}</h4>
           </Link>
@@ -23,7 +23,6 @@ const BlogItem = ({ post, history }) => {
 
 BlogItem.propTypes = {
   post: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
-  history: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
 };
 
 export default BlogItem;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import errorHandler from './error.service';
 
-axios.defaults.baseURL = process.env.REACT_APP_API_HOST;
+axios.defaults.baseURL = process.env.GATSBY_API_HOST;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
 export const getResource = (path) => {
