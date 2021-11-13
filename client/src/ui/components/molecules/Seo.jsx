@@ -16,6 +16,7 @@ const Seo = (props) => {
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="author" content="ezeugwagerrard" />
+      <meta name="icon" href="https://res.cloudinary.com/dz9mitahp/image/upload/v1636657770/ezeugwa_gerrard_logo_white_2cd8981d27.svg" />
 
       <meta name="og:url" content={url} />
       <meta name="og:title" content={title} />

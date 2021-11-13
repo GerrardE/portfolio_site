@@ -10,10 +10,11 @@ import {
   NavLink,
   Container,
 } from "reactstrap";
+import { navigate } from "gatsby";
 import AppBand from "./AppBand";
 import { Image } from "../atoms";
 
-const AppNavbar = ({ showBand, history, match }) => {
+const AppNavbar = ({ showBand, location }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -25,11 +26,11 @@ const AppNavbar = ({ showBand, history, match }) => {
       <Navbar color="light" fixed="top" light expand="md">
         <Container>
           <NavbarBrand
-            onClick={() => history.push("/")}
-            className={match.path === "/" ? "active" : ""}
+            onClick={() => navigate("/")}
+            className={location.pathname === "/" ? "active" : ""}
           >
             <Image
-              imageUrl="./ezeugwa-gerrard-logo.svg"
+              imageUrl="https://res.cloudinary.com/dz9mitahp/image/upload/v1636657874/ezeugwa_gerrard_logo_847486cb43.svg"
               altText="ezeugwagerrard logo"
               width="150"
               className="image-responsive"
@@ -41,24 +42,24 @@ const AppNavbar = ({ showBand, history, match }) => {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink
-                  onClick={() => history.push("/")}
-                  className={match.path === "/" ? "active" : ""}
+                  onClick={() => navigate("/")}
+                  className={location.pathname === "/" ? "active" : ""}
                 >
                   Home
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink
-                  onClick={() => history.push("/blog")}
-                  className={re.test(match.path) ? "active" : ""}
+                  onClick={() => navigate("/blog")}
+                  className={re.test(location.pathname) ? "active" : ""}
                 >
                   Blog
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink
-                  onClick={() => history.push("/contact")}
-                  className={match.path === "/contact" ? "active" : ""}
+                  onClick={() => navigate("/contact")}
+                  className={location.pathname === "/contact" ? "active" : ""}
                 >
                   Contact
                 </NavLink>
@@ -74,7 +75,7 @@ const AppNavbar = ({ showBand, history, match }) => {
 
 AppNavbar.propTypes = {
   showBand: PropTypes.string,
-  history: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
+  navigate: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
   match: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
 };
 

@@ -1,39 +1,52 @@
-import React, { Fragment } from "react";
-import { Route, Switch } from "react-router-dom";
-import { Provider } from "react-redux";
-import { Toaster } from "react-hot-toast";
-import routes from "@ui/routes/route";
-import store from "@application/config/store/store";
-import { Router } from "@reach/router"
+import React, { Fragment, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Row, Col, Container } from "reactstrap";
+import { get_about } from "@domain/redux/actions/about";
+import { AppLoader, Seo } from "@ui/components/molecules";
+import { AppNavbar, AppFooter, AppSocial } from "@ui/components/organisms";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "@ui/assets/css/fontawesome.css";
+const Home = (props) => {
+  const dispatch = useDispatch();
 
-import "@ui/assets/css/blog.css";
-import "@ui/assets/css/custom.css";
-import "@ui/assets/css/all.min.css";
-import "@ui/assets/css/simple-line-icons.css";
+  useEffect(() => {
+    dispatch(get_about());
+  }, [dispatch]);
 
-export default function App() {
+  const { about, loading } = useSelector((state) => state.about);
+
+  const seo = {
+    description: "Articles, tips and tricks to help you on your path to becoming a world-class Software Engineer.", 
+    url: `${process.env.GATSBY_BASE_URL}/blog`, 
+    title: "Ezeugwa Gerrard | Home", 
+    image: "https://res.cloudinary.com/dz9mitahp/image/upload/v1635609775/small_ezeugwagerrard_f0a822c23e.jpg?7751481.100000024",
+    keywords: "Ezeugwa Gerrard's, Personal Blog"
+  }
+
   return (
     <Fragment>
-      <Toaster position="top-right" reverseOrder />
-      <Provider store={store}>
-        <Router>
-          <Switch>
-            {routes.map((route) => {
-              return (
-                <Route
-                  exact
-                  key={route.path}
-                  path={route.path}
-                  component={route.component}
-                />
-              );
-            })}
-          </Switch>
-        </Router>
-      </Provider>
+      <Seo seo={seo} />
+      <AppNavbar showBand="true " {...props} />
+      {loading ? (
+        <AppLoader />
+      ) : (
+        <Container>
+          <Row>
+            <Col lg="8" md="10" className="mx-auto mt-3">
+              <div className="post-preview">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {about.bio}
+                </ReactMarkdown>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      )}
+      <AppSocial {...props} />
+      <AppFooter {...props} />
     </Fragment>
   );
-}
+};
+
+export default Home;
