@@ -34,10 +34,10 @@ const Contact = (props) => {
 
   const seo = {
     description: "Articles, tips and tricks to help you on your path to becoming a world-class Software Engineer.", 
-    url: `${process.env.GATSBY_BASE_URL}/blog`, 
+    url: `${process.env.GATSBY_BASE_URL}/contact`, 
     title: "Ezeugwa Gerrard | Contact", 
     image: "https://res.cloudinary.com/dz9mitahp/image/upload/v1635609775/small_ezeugwagerrard_f0a822c23e.jpg?7751481.100000024",
-    keywords: "Ezeugwa Gerrard's, Personal Blog"
+    keywords: "Contact Ezeugwa Gerrard"
   }
 
   return (
