@@ -60,6 +60,9 @@
     "postviews": {
       "via": "post",
       "collection": "postview"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }

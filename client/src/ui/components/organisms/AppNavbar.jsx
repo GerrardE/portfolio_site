@@ -76,7 +76,6 @@ const AppNavbar = ({ showBand, location }) => {
 AppNavbar.propTypes = {
   showBand: PropTypes.string,
   navigate: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
-  match: PropTypes.oneOfType([PropTypes.string, PropTypes.any]).isRequired,
 };
 
 AppNavbar.defaultProps = {

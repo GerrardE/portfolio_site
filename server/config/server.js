@@ -7,5 +7,5 @@ module.exports = ({ env }) => ({
       secret: env('ADMIN_JWT_SECRET'),
     },
   },
-  url: 'http://api.ezeugwagerrard.com',
+  url: env('URL', 'http://api.ezeugwagerrard.com'),
 });

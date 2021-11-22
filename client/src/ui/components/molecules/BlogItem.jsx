@@ -9,7 +9,7 @@ const BlogItem = ({ post }) => {
     <Row>
       <Col lg="8" md="10" className="mx-auto">
         <div className="post-preview">
-          <Link to={`/blog/${post.id}`}>
+          <Link to={`/blog/${post.slug}`}>
             <h3 className="post-title">{post.title}</h3>
             <h4 className="post-subtitle">{post.subtitle}</h4>
           </Link>
