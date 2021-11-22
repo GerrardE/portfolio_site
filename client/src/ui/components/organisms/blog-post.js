@@ -116,7 +116,7 @@ const BlogPost = (props) => {
                   <Badge
                     key={c.id}
                     className="mr-2"
-                    onClick={() => navigate(`/blog/${c.slug}/category`)}
+                    onClick={() => navigate(`/blog/${c.slug}`)}
                   >
                     {c.name}
                   </Badge>

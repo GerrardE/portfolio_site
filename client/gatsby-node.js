@@ -13,7 +13,7 @@ exports.createPages = async function ({ actions }) {
     if (posts.length > 0) {
       actions.createPage({
         path: `/blog`,
-        component: require.resolve("./src/pages/blog.js"),
+        component: require.resolve("./src/ui/pages/blog.js"),
         context: { posts: posts },
       });
     }
@@ -34,24 +34,12 @@ exports.createPages = async function ({ actions }) {
     if (categories.length > 0) {
       categories.forEach((c) => {
         actions.createPage({
-          path: `/blog/${c.slug}/category`,
-          component: require.resolve("./src/pages/category.js"),
+          path: `/blog/${c.slug}`,
+          component: require.resolve("./src/ui/pages/category.js"),
           context: { category: c },
         });
       });
     }
-
-    // const { data: about } = await axios.get(`${process.env.GATSBY_API_HOST}/about`);
-
-    // // serve the about
-    // if(about) {
-    //   console.log(about)
-    //   actions.createPage({
-    //     path: `/index`,
-    //     component: require.resolve("./src/pages/index.js"),
-    //     context: { about: about },
-    //   });
-    // }
   } catch (error) {
     console.log(error);
   }
