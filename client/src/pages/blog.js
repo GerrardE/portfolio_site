@@ -1,23 +1,26 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Container, Col } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { get_posts } from "@domain/redux/actions/posts";
 import { count_down } from "@domain/redux/actions/loader";
 import { AppNavbar, AppFooter, AppHeader } from "@ui/components/organisms";
 import { BlogItem, AppPagination, AppLoader, Seo } from "@ui/components/molecules";
 
 const Blog = (props) => {
+  const {
+    pageContext,
+  } = props;
+
+  const { posts } = pageContext;
+
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(get_posts());
     dispatch(count_down(1000));
   }, [dispatch]);
 
-  const posts = useSelector((state) => state.posts.posts);
   const posts_loading = useSelector((state) => state.posts.loading);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;

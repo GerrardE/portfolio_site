@@ -10,11 +10,11 @@ import "@ui/assets/css/custom.css";
 import "@ui/assets/css/all.min.css";
 import "@ui/assets/css/simple-line-icons.css";
 
-export default function App({ element }) {
+export default function App({ element, props }) {
   return (
     <Fragment>
       <Toaster position="top-right" reverseOrder />
-      <Provider store={store}>
+      <Provider store={store} {...props}>
         {element}
       </Provider>
     </Fragment>

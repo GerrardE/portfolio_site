@@ -5,7 +5,6 @@ import remarkGfm from "remark-gfm";
 import { Link, navigate } from "gatsby";
 import { Col, Badge, Tooltip, Container } from "reactstrap";
 import PropTypes from "prop-types";
-import { get_post } from "@domain/redux/actions/posts";
 import { post_comment } from "@domain/redux/actions/comments";
 import { get_clap_count, post_clap } from "@domain/redux/actions/postclaps";
 import { post_view } from "@domain/redux/actions/postviews";
@@ -17,19 +16,19 @@ const BlogPost = (props) => {
   const {
     pageContext,
   } = props;
-  const { id } = pageContext;
+
+  const { post } = pageContext;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (id) {
-      dispatch(post_view({ post: id, view: 1 }));
-      dispatch(get_post(id));
-      dispatch(get_clap_count(id));
+    if (post.id) {
+      dispatch(post_view({ post: post.id, view: 1 }));
+      dispatch(get_clap_count(post.id));
     }
-  }, [dispatch, id]);
+  }, [dispatch, post.id]);
 
-  const { post, loading } = useSelector((state) => state.posts);
+  const { loading } = useSelector((state) => state.posts);
   const {
     postviews: { count: postviewcount },
     postclaps: { count: postclapcount },
@@ -42,18 +41,16 @@ const BlogPost = (props) => {
     name: "",
     email: "",
     body: "",
-    sum: 0,
   });
 
   const [errors, setErrors] = useState({
     name: "",
     email: "",
     body: "",
-    sum: "",
   });
 
-  const returnCommments = (post) => {
-    const commentItems = post.comments.map((comment) => {
+  const returnComments = (comments) => {
+    const commentItems = comments.map((comment) => {
       if (comment.isapproved) {
         return (
           <Fragment key={comment._id}>
@@ -138,9 +135,9 @@ const BlogPost = (props) => {
                 </Tooltip>
                 <small
                   id="ClapToolTip"
-                  onClick={() => dispatch(post_clap({ post: id, clap: 1 }))}
+                  onClick={() => dispatch(post_clap({ post: post.id, clap: 1 }))}
                   role="button"
-                  onKeyPress={() => dispatch(post_clap({ post: id, clap: 1 }))}
+                  onKeyPress={() => dispatch(post_clap({ post: post.id, clap: 1 }))}
                   tabIndex="0"
                 >
                   <i className="fas fa-sign-language fa-custom" alt="claps" />{" "}
@@ -200,7 +197,7 @@ const BlogPost = (props) => {
                       <div className="control-group">
                         <div className="form-group floating-label-form-group controls">
                           <label htmlFor="Email Address">
-                            Email Address(Your email will be hidden)
+                            Email Address(Your email address is private)
                             <input
                               type="email"
                               className="form-control"
@@ -253,33 +250,6 @@ const BlogPost = (props) => {
                           )}
                         </div>
                       </div>
-                      <div className="control-group">
-                        <div className="form-group floating-label-form-group controls">
-                          <label htmlFor="sum">
-                            What is the sum of 44 and 6?
-                            <input
-                              type="number"
-                              className="form-control"
-                              id="sum"
-                              onChange={(e) =>
-                                setForm({
-                                  ...commentForm,
-                                  sum: Number(e.target.value),
-                                })
-                              }
-                              required
-                              data-validation-required-message="Please do the math."
-                            />
-                          </label>
-                          {errors && errors.sum?.length > 1 ? (
-                            <p className="help-block text-danger">
-                              {errors.sum}
-                            </p>
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                      </div>
                       <br />
                       <div id="success" className="d-block" />
                       <button
@@ -311,21 +281,14 @@ const BlogPost = (props) => {
                               ...errors,
                               body: "Comment must be greater than 2 and less than 500 characters...",
                             });
-                          } else if (commentForm.sum !== 44 + 6) {
-                            setErrors({
-                              ...errors,
-                              body: "",
-                              sum: "Please sum 44 and 6 correctly...",
-                            });
                           } else {
                             setErrors({
                               name: "",
                               email: "",
                               body: "",
-                              sum: "",
                             });
                             dispatch(
-                              post_comment({ ...commentForm, post: id })
+                              post_comment({ ...commentForm, post: post.id })
                             );
                             setCommentOpen(!isCommentOpen);
                           }
@@ -338,7 +301,7 @@ const BlogPost = (props) => {
                     <Fragment />
                   )}
 
-                  {returnCommments(post)}
+                  {returnComments(post.comments)}
                 </div>
               </Col>
             </article>

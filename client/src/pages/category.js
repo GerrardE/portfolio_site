@@ -1,7 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Container } from "reactstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { get_posts } from "@domain/redux/actions/posts";
+import { useSelector } from "react-redux";
 import { AppNavbar, AppFooter } from "@ui/components/organisms";
 import { BlogItem, AppPagination, AppLoader, Seo } from "@ui/components/molecules";
 
@@ -10,24 +9,16 @@ const Category = (props) => {
     pageContext,
   } = props;
 
-  const { categoryid } = pageContext;
+  const { category } = pageContext;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(get_posts(categoryid));
-  }, [dispatch, categoryid]);
-
-  const {
-    categoryposts: { posts, name },
-  } = useSelector((state) => state.posts);
+  
   const posts_loading = useSelector((state) => state.posts.loading);
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = category.posts.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -41,7 +32,7 @@ const Category = (props) => {
 
   const seo = {
     description: "Articles, tips and tricks to help you on your path to becoming a world-class Software Engineer.", 
-    url: `${process.env.GATSBY_BASE_URL}/blog/${categoryid}/category`, 
+    url: `${process.env.GATSBY_BASE_URL}/blog/${category.id}/category`, 
     title: "Ezeugwa Gerrard | Category", 
     image: "https://res.cloudinary.com/dz9mitahp/image/upload/v1635609775/small_ezeugwagerrard_f0a822c23e.jpg?7751481.100000024",
     keywords: "Ezeugwa Gerrard's Blog"
@@ -56,12 +47,12 @@ const Category = (props) => {
       ) : (
         <Fragment>
           <Container className="mb-4">
-            <h4 className="mb-4 text-center">{`${`Posts by category: "${name}"`}`}</h4>
+            <h4 className="mb-4 text-center">{`${`Posts by category: "${category.name}"`}`}</h4>
             <div className="clearfix">
               <AppPagination
                 className=" "
                 postsPerPage={postsPerPage}
-                totalPosts={posts.length}
+                totalPosts={category.posts.length}
                 paginate={paginate}
                 currentPage={currentPage}
               />
@@ -71,7 +62,7 @@ const Category = (props) => {
               <AppPagination
                 className=" "
                 postsPerPage={postsPerPage}
-                totalPosts={posts.length}
+                totalPosts={category.posts.length}
                 paginate={paginate}
                 currentPage={currentPage}
               />
