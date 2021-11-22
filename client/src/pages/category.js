@@ -8,7 +8,7 @@ const Category = (props) => {
   const {
     pageContext,
   } = props;
-
+  
   const { category } = pageContext;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,7 +32,7 @@ const Category = (props) => {
 
   const seo = {
     description: "Articles, tips and tricks to help you on your path to becoming a world-class Software Engineer.", 
-    url: `${process.env.GATSBY_BASE_URL}/blog/${category.id}/category`, 
+    url: `${process.env.GATSBY_BASE_URL}/blog/${category.slug}/category`, 
     title: "Ezeugwa Gerrard | Category", 
     image: "https://res.cloudinary.com/dz9mitahp/image/upload/v1635609775/small_ezeugwagerrard_f0a822c23e.jpg?7751481.100000024",
     keywords: "Ezeugwa Gerrard's Blog"

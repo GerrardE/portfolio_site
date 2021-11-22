@@ -29,7 +29,7 @@ module.exports = {
                     <div class="ibody" style="text-align:left;color:#444;padding:20px 5px">
                         <p>Name: ${data.name}</p>
                         <p>Email: ${data.email}</p>
-                        <p>Post Id: ${data.post}</p>
+                        <p>Post: ${process.env.CLIENT_URL}/blog/${data.slug}</p>
                         
                         <br/>
                         <p>${data.body}</p>

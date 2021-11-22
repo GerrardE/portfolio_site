@@ -82,7 +82,7 @@ const BlogPost = (props) => {
 
   if (Object.keys(post).length > 0) {
     seo.description = post.subtitle;
-    seo.url = `${process.env.GATSBY_BASE_URL}/blog/${post.id}`;
+    seo.url = `${process.env.GATSBY_BASE_URL}/blog/${post.slug}`;
     seo.title = post.title;
     seo.image = post.cover.url;
     if (post.metatags.length > 0) {
@@ -116,7 +116,7 @@ const BlogPost = (props) => {
                   <Badge
                     key={c.id}
                     className="mr-2"
-                    onClick={() => navigate(`/blog/${c.id}/category`)}
+                    onClick={() => navigate(`/blog/${c.slug}/category`)}
                   >
                     {c.name}
                   </Badge>

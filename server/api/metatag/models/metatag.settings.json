@@ -17,8 +17,8 @@
       "unique": true
     },
     "posts": {
-      "private": true,
       "via": "metatags",
+      "private": true,
       "collection": "post"
     }
   }
