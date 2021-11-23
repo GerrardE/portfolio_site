@@ -7,7 +7,7 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi",
-    "clean": "rm -rf build/ || true",
+    "clean": "rm -rf build/ .cache || true",
     "build": "strapi build"
   },
   "devDependencies": {},
