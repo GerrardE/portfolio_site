@@ -1,0 +1,14 @@
+.cache
+node_modules
+npm-debug.log
+Dockerfile
+.git
+.gitignore
+README.md
+spec
+.env.example
+build
+yarn-error.log
+script.sh
+package-lock.json
+public

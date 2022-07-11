@@ -1,0 +1,56 @@
+version: "3.9"
+services:
+  client:
+    container_name: "client"
+    environment:
+      NODE_ENV: "${NODE_ENV}"
+      PORT: "${PORT}"
+      GATSBY_API_HOST: "${GATSBY_API_HOST}"
+      GATSBY_BASE_URL: "${GATSBY_BASE_URL}"
+      HOSTNAME: "${CLIENT_HOSTNAME}"
+      PARCEL_WORKERS: 1
+    build:
+      context: ./client
+    command: yarn serve
+    ports:
+      - "${CLIENT_PORT}:8000"
+    networks:
+      - site_network
+
+  server:
+    container_name: "server"
+    environment:
+      NODE_ENV: "${NODE_ENV}"
+      PORT: "${PORT}"
+      HOST: "${HOST}"
+      JWT_SECRET: "${JWT_SECRET}"
+      URL: "${URL}"
+      CLIENT_URL: "${CLIENT_URL}"
+      DATABASE_HOST: "${DATABASE_HOST}"
+      DATABASE_SRV: "${DATABASE_SRV}"
+      DATABASE_PORT: "${DATABASE_PORT}"
+      DATABASE_NAME: "${DATABASE_NAME}"
+      DATABASE_USERNAME: "${DATABASE_USERNAME}"
+      DATABASE_PASSWORD: "${DATABASE_PASSWORD}"
+      AUTHENTICATION_DATABASE: "${AUTHENTICATION_DATABASE}"
+      DATABASE_SSL: "${DATABASE_SSL}"
+      ADMIN_JWT_SECRET: "${ADMIN_JWT_SECRET}"
+      FROM: "${FROM}"
+      TO: "${TO}"
+      AWS_SES_HOST: "${AWS_SES_HOST}"
+      AWS_SES_SECRET: "${AWS_SES_SECRET}"
+      AWS_SES_KEY: "${AWS_SES_KEY}"
+      CLOUDINARY_NAME: "${CLOUDINARY_NAME}"
+      CLOUDINARY_KEY: "${CLOUDINARY_KEY}"
+      CLOUDINARY_SECRET: "${CLOUDINARY_SECRET}"
+      IS_PROXIED: "${IS_PROXIED}"
+    build:
+      context: ./server
+    ports:
+      - "${PORT}:1337"
+    networks:
+      - site_network
+
+networks:
+  site_network:
+    driver: bridge

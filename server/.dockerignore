@@ -1,0 +1,12 @@
+.cache
+public/uploads
+node_modules
+npm-debug.log
+Dockerfile
+.git
+.gitignore
+README.md
+ecosystem.config.js
+spec
+.env.example
+build
