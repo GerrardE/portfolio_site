@@ -49,6 +49,11 @@ resource "aws_instance" "web" {
   }
 }
 
+resource "aws_eip" "lb" {
+  instance = aws_instance.web.id
+  vpc      = true
+}
+
 resource "aws_security_group" "allow_tls" {
   name        = var.resource_tag_name
   description = "Allow TLS inbound traffic"
