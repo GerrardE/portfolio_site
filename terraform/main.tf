@@ -35,10 +35,15 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
+resource "aws_key_pair" "deployer" {
+  key_name   = "${var.resource_tag_name}_key"
+  public_key = var.public_key
+}
+
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.small"
-
+  key_name = aws_key_pair.deployer.key_name
   tags = {
     Name = "${var.resource_tag_name}_ec2"
   }

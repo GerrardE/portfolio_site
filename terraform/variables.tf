@@ -32,3 +32,7 @@ variable "resource_tag_name" {
 variable "vpc_id" {
   description = "VPC id"
 }
+
+variable "public_key" {
+  description = "ec2 deployer key"
+}
