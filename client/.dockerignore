@@ -5,7 +5,10 @@ Dockerfile
 .git
 .gitignore
 README.md
-ecosystem.config.js
 spec
 .env.example
 build
+yarn-error.log
+script.sh
+package-lock.json
+public

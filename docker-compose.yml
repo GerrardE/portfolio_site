@@ -1,19 +1,5 @@
 version: "3.9"
 services:
-  clientdryrun:
-    container_name: "clientDryrun"
-    environment:
-      NODE_ENV: "${NODE_ENV}"
-      PORT: "${CLIENT_PORT}"
-      GATSBY_API_HOST: "${GATSBY_API_HOST}"
-      GATSBY_BASE_URL: "${GATSBY_BASE_URL}"
-      HOSTNAME: "${CLIENT_HOSTNAME}"
-    build:
-      context: ./client
-      target: buildstage1
-    networks:
-      - site_network
-
   client:
     container_name: "client"
     environment:
@@ -22,44 +8,12 @@ services:
       GATSBY_API_HOST: "${GATSBY_API_HOST}"
       GATSBY_BASE_URL: "${GATSBY_BASE_URL}"
       HOSTNAME: "${CLIENT_HOSTNAME}"
+      PARCEL_WORKERS: 1
     build:
       context: ./client
-      target: buildstage2
+    command: yarn serve
     ports:
       - "${CLIENT_PORT}:8000"
-    networks:
-      - site_network
-
-  serverdryrun:
-    container_name: "serverDryrun"
-    environment:
-      NODE_ENV: "${NODE_ENV}"
-      PORT: "${PORT}"
-      HOST: "${HOST}"
-      JWT_SECRET: "${JWT_SECRET}"
-      URL: "${URL}"
-      CLIENT_URL: "${CLIENT_URL}"
-      DATABASE_HOST: "${DATABASE_HOST}"
-      DATABASE_SRV: "${DATABASE_SRV}"
-      DATABASE_PORT: "${DATABASE_PORT}"
-      DATABASE_NAME: "${DATABASE_NAME}"
-      DATABASE_USERNAME: "${DATABASE_USERNAME}"
-      DATABASE_PASSWORD: "${DATABASE_PASSWORD}"
-      AUTHENTICATION_DATABASE: "${AUTHENTICATION_DATABASE}"
-      DATABASE_SSL: "${DATABASE_SSL}"
-      ADMIN_JWT_SECRET: "${ADMIN_JWT_SECRET}"
-      FROM: "${FROM}"
-      TO: "${TO}"
-      AWS_SES_HOST: "${AWS_SES_HOST}"
-      AWS_SES_SECRET: "${AWS_SES_SECRET}"
-      AWS_SES_KEY: "${AWS_SES_KEY}"
-      CLOUDINARY_NAME: "${CLOUDINARY_NAME}"
-      CLOUDINARY_KEY: "${CLOUDINARY_KEY}"
-      CLOUDINARY_SECRET: "${CLOUDINARY_SECRET}"
-      IS_PROXIED: "${IS_PROXIED}"
-    build:
-      context: ./server
-      target: buildstage1
     networks:
       - site_network
 
@@ -92,7 +46,6 @@ services:
       IS_PROXIED: "${IS_PROXIED}"
     build:
       context: ./server
-      target: buildstage2
     ports:
       - "${PORT}:1337"
     networks:
