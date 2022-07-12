@@ -6,7 +6,7 @@
         "serve:client": "cd client && npm run serve",
         "install:client": "cd client && npm i",
         "build:client": "cd client && npm run build",
-        "start:client": "cd client && npm start"
+        "start:client": "cd client && npm run serve"
     },
     "devDependencies": {},
     "dependencies": {},

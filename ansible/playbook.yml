@@ -1,0 +1,14 @@
+---
+
+- hosts: portfolio_site
+  become: yes
+  tasks:
+  - name: install git
+    apt:
+      name: git
+      state: latest
+
+  - name: install nginx
+    apt:
+      name: nginx
+      state: latest
