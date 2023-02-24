@@ -1,7 +1,7 @@
 - setup nginx
 - - sudo ufw allow 'Nginx HTTP'
 - - sudo ufw allow 'Nginx HTTPS'
-- - sudo apt install certbot python3-certbot-nginx -y
+- - sudo apt install certbot python3-certbot-nginx nginx -y
 
 - setup certbot
 - - sudo certbot --nginx -d www.ezeugwagerrard.com -d www.ezeugwagerrard.com
